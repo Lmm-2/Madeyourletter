@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- مكتبة التقاط الشاشة الدقيقة -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root {
@@ -107,14 +109,17 @@
             background: var(--burgundy);
             color: white;
             border: none;
-            padding: 7px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            padding: 10px 16px;
+            border-radius: 14px;
+            font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(107, 29, 47, 0.2);
         }
 
         .tool-panel {
@@ -309,7 +314,7 @@
         /* Paper Card Container */
         .paper-card {
             width: 100%;
-            min-height: 500px;
+            min-height: 520px;
             border-radius: 18px;
             padding: 30px 24px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.06);
@@ -352,8 +357,8 @@
             top: 24px;
             left: 20px !important;
             right: auto !important;
-            width: 60px;
-            height: 65px;
+            width: 65px;
+            height: 70px;
             background-color: #FFFFFF !important;
             border: 1.5px dashed #C5A059;
             padding: 4px;
@@ -380,7 +385,7 @@
         .paper-header {
             border: none;
             background: transparent;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
@@ -402,11 +407,11 @@
         .paper-body {
             border: none;
             background: transparent;
-            font-size: 1.2rem;
-            line-height: 1.85;
+            font-size: 1.25rem;
+            line-height: 1.9;
             color: inherit;
             width: 100%;
-            height: 220px;
+            height: 240px;
             resize: none;
             outline: none;
             font-family: inherit;
@@ -415,7 +420,7 @@
         .paper-footer {
             border: none;
             background: transparent;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
@@ -426,26 +431,20 @@
 
         .wax-seal-btn {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 52px;
-            height: 52px;
+            bottom: 22px;
+            right: 22px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             background-color: #D4AF37 !important;
             color: #591624 !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.2);
             border: 2px dashed rgba(255,255,255,0.4);
             cursor: pointer;
-        }
-
-        .export-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
         }
 
         .modal-overlay {
@@ -547,16 +546,16 @@
 
             <span class="section-title">١. اختر خامة ونمط الورق:</span>
             <div class="grid-2">
-                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', '#F5ECDF', '#4A3E3D', this)">
+                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', this)">
                     📜 ورق معتق (Vintage)
                 </div>
-                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', '#FDF0F2', '#6B1D2F', this)">
+                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', this)">
                     🌸 ورق روز أنيق
                 </div>
-                <div class="opt-card" onclick="setPaperTheme('paper-white', '#FFFFFF', '#2B2B2B', this)">
+                <div class="opt-card" onclick="setPaperTheme('paper-white', this)">
                     📄 أبيض كلاسيكي
                 </div>
-                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', '#131B24', '#E6C587', this)">
+                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', this)">
                     ✨ كحلي ملكي وذهبي
                 </div>
             </div>
@@ -617,10 +616,10 @@
                 <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
             </div>
 
-            <span class="section-title">حفظ وتصدير البطاقة الفاخرة:</span>
-            <div class="export-actions">
-                <button class="btn-pill" style="flex:1; justify-content:center; padding: 12px;" onclick="exportHighResCard()">🖼️ تحميل البطاقة عالية الجودة (PNG)</button>
-            </div>
+            <span class="section-title" style="margin-top: 18px;">حفظ وتصدير البطاقة الفاخرة:</span>
+            <button class="btn-pill" onclick="exportExactCardImage()">
+                <span>📥</span> تحميل البطاقة بدقة مطابقة للشاشة (PNG)
+            </button>
         </div>
 
         <div class="paper-card paper-vintage" id="paperCard">
@@ -628,13 +627,13 @@
             <div class="satin-ribbon" id="satinRibbon"></div>
 
             <div class="stamp-box" id="stampBox">
-                <input type="text" class="stamp-input" id="stampLine1" value="Letters & Love">
-                <input type="text" class="stamp-input" id="stampLine2" value="2026" style="font-size:0.55rem;">
+                <input type="text" class="stamp-input" value="Letters & Love">
+                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
             </div>
 
             <div>
                 <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                <span class="paper-date" id="paperDate">٣١ أكتوبر ٢٠٢٦</span>
+                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
                 <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
@@ -657,19 +656,19 @@
     <div class="modal-overlay" id="fontModal">
         <div class="modal-card">
             <h3>اختر نوع الخط العربي ✒️</h3>
-            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'Aref Ruqaa', 'خط الرقعة الأصلي')">
+            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة الأصلي')">
                 <span>خط الرقعة الأصلي</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'Amiri', 'خط الأميري الكلاسيكي')">
+            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري الكلاسيكي')">
                 <span>خط الأميري الكلاسيكي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'Reem Kufi', 'خط كوفي حديث')">
+            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
                 <span>خط كوفي حديث</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'Tajawal', 'خط تجوال الحديث')">
+            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال الحديث')">
                 <span>خط تجوال الحديث</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'Cairo', 'خط القاهرة الناعم')">
+            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة الناعم')">
                 <span>خط القاهرة الناعم</span> <div class="radio-dot"></div>
             </div>
         </div>
@@ -679,13 +678,13 @@
     <div class="modal-overlay" id="sizeModal">
         <div class="modal-card">
             <h3>اختر حجم النص 📏</h3>
-            <div class="modal-option" onclick="setSize('1.05rem', 22, 'حجم الخط: عادي')">
+            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: عادي')">
                 <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.2rem', 26, 'حجم الخط: متوسط')">
+            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: متوسط')">
                 <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.35rem', 30, 'حجم الخط: كبير')">
+            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير')">
                 <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
             </div>
         </div>
@@ -697,30 +696,20 @@
             <h3>إرشادات التصميم والتحميل 💡</h3>
             <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
             <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
-            <div class="guide-step">٣. اضغطوا زر التصدير لتحميل بطاقتكم بنقاء فائق كصورة أو ملف بصفحة واحدة!</div>
+            <div class="guide-step">٣. اضغطوا زر التحميل لتحفظوا البطاقة مطابقة تماماً لشاشتكم بوضوح فائق!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
 
     <script>
-        let currentBg = '#F5ECDF';
-        let currentTextColor = '#4A3E3D';
-        let currentFontFamily = 'Aref Ruqaa';
-        let currentFontSizePx = 26;
-        let sealColor = '#D4AF37';
-
-        function setPaperTheme(cls, bg, textColor, el) {
-            currentBg = bg;
-            currentTextColor = textColor;
+        function setPaperTheme(cls, el) {
             const card = document.getElementById('paperCard');
             card.className = 'paper-card ' + cls;
             document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
             if(el) el.classList.add('active');
-            setTextColor(textColor);
         }
 
         function setTextColor(color) {
-            currentTextColor = color;
             const card = document.getElementById('paperCard');
             card.style.color = color;
             document.getElementById('paperHeader').style.color = color;
@@ -730,12 +719,18 @@
 
         function toggleSeal() {
             const isChecked = document.getElementById('sealToggle').checked;
-            document.getElementById('waxSeal').style.display = isChecked ? 'flex' : 'none';
-            document.getElementById('sealControlsGroup').classList.toggle('disabled', !isChecked);
+            const seal = document.getElementById('waxSeal');
+            const controls = document.getElementById('sealControlsGroup');
+            
+            seal.style.display = isChecked ? 'flex' : 'none';
+            if (isChecked) {
+                controls.classList.remove('disabled');
+            } else {
+                controls.classList.add('disabled');
+            }
         }
 
         function setSealBg(c) {
-            sealColor = c;
             document.getElementById('waxSeal').style.backgroundColor = c;
         }
 
@@ -744,11 +739,13 @@
         }
 
         function toggleStamp() {
-            document.getElementById('stampBox').style.display = document.getElementById('stampCheck').checked ? 'flex' : 'none';
+            document.getElementById('stampBox').style.display = 
+                document.getElementById('stampCheck').checked ? 'flex' : 'none';
         }
 
         function toggleRibbon() {
-            document.getElementById('satinRibbon').style.display = document.getElementById('ribbonCheck').checked ? 'block' : 'none';
+            document.getElementById('satinRibbon').style.display = 
+                document.getElementById('ribbonCheck').checked ? 'block' : 'none';
         }
 
         function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
@@ -756,17 +753,23 @@
         function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
         function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
 
-        function setFont(fontCss, fontName, label) {
-            currentFontFamily = fontName;
-            const elements = [document.getElementById('paperCard'), document.getElementById('paperHeader'), document.getElementById('paperBody'), document.getElementById('paperFooter')];
-            elements.forEach(el => el.style.fontFamily = fontCss);
+        function setFont(fontFamily, label) {
+            const card = document.getElementById('paperCard');
+            const body = document.getElementById('paperBody');
+            const header = document.getElementById('paperHeader');
+            const footer = document.getElementById('paperFooter');
+
+            card.style.fontFamily = fontFamily;
+            body.style.fontFamily = fontFamily;
+            header.style.fontFamily = fontFamily;
+            footer.style.fontFamily = fontFamily;
+
             document.getElementById('fontLabel').innerText = label;
             document.getElementById('fontModal').style.display = 'none';
         }
 
-        function setSize(sizeCss, pxSize, label) {
-            currentFontSizePx = pxSize;
-            document.getElementById('paperBody').style.fontSize = sizeCss;
+        function setSize(size, label) {
+            document.getElementById('paperBody').style.fontSize = size;
             document.getElementById('sizeLabel').innerText = label;
             document.getElementById('sizeModal').style.display = 'none';
         }
@@ -784,107 +787,27 @@
             }
         }
 
-        /* NATIVE HIGH-RESOLUTION CANVAS EXPORT (NATIVE RENDERER) */
-        function exportHighResCard() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const width = 800;
-            const height = 1100;
-
-            canvas.width = width;
-            canvas.height = height;
-
-            // 1. Background
-            ctx.fillStyle = currentBg;
-            ctx.fillRect(0, 0, width, height);
-
-            // 2. Top Ribbon
-            ctx.fillStyle = '#6B1D2F';
-            ctx.fillRect(0, 0, width, 16);
-
-            // 3. Satin Ribbon
-            if (document.getElementById('ribbonCheck').checked) {
-                ctx.fillStyle = 'rgba(107, 29, 47, 0.12)';
-                ctx.fillRect(width - 90, 0, 45, height);
-                ctx.strokeStyle = 'rgba(107, 29, 47, 0.25)';
-                ctx.setLineDash([6, 6]);
-                ctx.beginPath();
-                ctx.moveTo(width - 90, 0); ctx.lineTo(width - 90, height);
-                ctx.moveTo(width - 45, 0); ctx.lineTo(width - 45, height);
-                ctx.stroke();
-                ctx.setLineDash([]);
-            }
-
-            // 4. Stamp Box (Fixed Top-Left)
-            if (document.getElementById('stampCheck').checked) {
-                ctx.fillStyle = '#FFFFFF';
-                ctx.fillRect(40, 40, 110, 125);
-                ctx.strokeStyle = '#C5A059';
-                ctx.lineWidth = 2;
-                ctx.setLineDash([4, 4]);
-                ctx.strokeRect(40, 40, 110, 125);
-                ctx.setLineDash([]);
-
-                ctx.fillStyle = '#6B1D2F';
-                ctx.font = 'bold 13px Cairo, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(document.getElementById('stampLine1').value, 95, 95);
-                ctx.font = 'bold 11px Cairo, sans-serif';
-                ctx.fillText(document.getElementById('stampLine2').value, 95, 120);
-            }
-
-            // 5. Text Contents
-            ctx.fillStyle = currentTextColor;
-            ctx.textAlign = 'right';
-
-            // Header
-            ctx.font = `bold 30px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
-            ctx.fillText(document.getElementById('paperHeader').value, width - 60, 95);
-
-            // Date
-            ctx.font = '16px Cairo, sans-serif';
-            ctx.fillText(document.getElementById('paperDate').innerText, width - 60, 130);
-
-            // Body Lines
-            ctx.font = `${currentFontSizePx + 6}px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
-            const lines = document.getElementById('paperBody').value.split('\n');
-            let startY = 220;
-            lines.forEach(line => {
-                ctx.fillText(line, width - 60, startY);
-                startY += (currentFontSizePx * 1.9);
+        /* PERFECT ACCURATE HTML2CANVAS EXPORT */
+        function exportExactCardImage() {
+            const cardElement = document.getElementById('paperCard');
+            
+            // Fix textareas and inputs for proper canvas rendering
+            const textareas = cardElement.querySelectorAll('textarea, input');
+            textareas.forEach(el => {
+                el.style.width = el.offsetWidth + 'px';
             });
 
-            // Footer Sign
-            ctx.font = `bold 24px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
-            ctx.fillText(document.getElementById('paperFooter').value, width - 140, height - 70);
-
-            // 6. Wax Seal (Bottom Right)
-            if (document.getElementById('sealToggle').checked) {
-                const sealX = width - 75;
-                const sealY = height - 75;
-
-                ctx.beginPath();
-                ctx.arc(sealX, sealY, 42, 0, Math.PI * 2);
-                ctx.fillStyle = sealColor;
-                ctx.fill();
-
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.setLineDash([3, 3]);
-                ctx.stroke();
-                ctx.setLineDash([]);
-
-                ctx.fillStyle = '#591624';
-                ctx.font = '32px serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(document.getElementById('waxSeal').innerText, sealX, sealY + 10);
-            }
-
-            // Trigger Download
-            const link = document.createElement('a');
-            link.download = 'Letters-and-Love-Card.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+            window.html2canvas(cardElement, {
+                scale: 3, // High resolution
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: null
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Letters-and-Love-Card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
         }
     </script>
 </body>
