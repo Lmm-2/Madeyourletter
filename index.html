@@ -309,17 +309,17 @@
             color: var(--burgundy);
         }
 
-        /* Safe Mobile-Adapted Paper Card */
+        /* Fully Expanded Card Container */
         .paper-card {
             width: 100%;
-            min-height: 520px;
+            min-height: 560px;
             border-radius: 18px;
-            padding: 35px 22px; /* تقليل الهوامش الخارجية قليلاً لسلامة الأطراف */
+            padding: 38px 24px 75px 24px; /* مساحة واسعة من الأسفل لعدم تداخل التوقيع والختم */
             box-shadow: 0 12px 32px rgba(0,0,0,0.06);
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 16px;
             transition: all 0.3s;
             overflow: hidden;
             font-family: 'Aref Ruqaa', serif;
@@ -341,7 +341,7 @@
         .satin-ribbon {
             position: absolute;
             top: 0;
-            right: 35px;
+            right: 40px;
             width: 24px;
             height: 100%;
             background-color: rgba(107, 29, 47, 0.15) !important;
@@ -350,14 +350,13 @@
             pointer-events: none;
         }
 
-        /* Fixed Inset Stamp Box */
         .stamp-box {
             position: absolute;
-            top: 24px;
-            left: 16px !important; /* تقريب الطابع للداخل لسلامته من القص */
+            top: 25px;
+            left: 20px !important;
             right: auto !important;
-            width: 60px;
-            height: 65px;
+            width: 58px;
+            height: 64px;
             background-color: #FFFFFF !important;
             border: 1.5px dashed #C5A059;
             padding: 4px;
@@ -373,7 +372,7 @@
             border: none;
             background: transparent;
             text-align: center;
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             font-weight: bold;
             color: var(--burgundy);
             width: 100%;
@@ -398,22 +397,23 @@
             font-size: 0.75rem;
             color: inherit;
             opacity: 0.7;
-            margin-bottom: 20px;
             display: block;
             font-family: 'Cairo', sans-serif;
         }
 
-        .paper-body {
+        /* Editable Body (Auto-expandable to fit all text cleanly) */
+        .paper-body-editable {
             border: none;
             background: transparent;
-            font-size: 1.25rem;
-            line-height: 1.9;
+            font-size: 1.2rem;
+            line-height: 1.95;
             color: inherit;
             width: 100%;
-            height: 240px;
-            resize: none;
             outline: none;
             font-family: inherit;
+            white-space: pre-wrap;
+            word-break: break-word;
+            min-height: 180px;
         }
 
         .paper-footer {
@@ -426,23 +426,22 @@
             text-align: right;
             outline: none;
             font-family: inherit;
-            padding-left: 50px; /* إعطاء مساحة للختم لعدم التداخل */
+            margin-top: auto;
         }
 
-        /* Fixed Inset Wax Seal */
         .wax-seal-btn {
             position: absolute;
-            bottom: 18px;
-            right: 16px; /* تقريب الختم للداخل لسلامته من القص */
-            width: 52px;
-            height: 52px;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: #D4AF37 !important;
             color: #591624 !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.2);
             border: 2px dashed rgba(255,255,255,0.4);
             cursor: pointer;
@@ -467,7 +466,7 @@
 
         body.clean-mode {
             background-color: var(--bg-color) !important;
-            padding: 30px 15px !important;
+            padding: 30px 12px !important;
             justify-content: center !important;
         }
 
@@ -644,30 +643,33 @@
 
             <span class="section-title" style="margin-top: 18px;">المعاينة والتصوير المباشر:</span>
             <button class="btn-pill" onclick="toggleCleanMode()">
-                <span>📸</span> عرض البطاقة للتصوير المثالي (Screenshot)
+                <span>📸</span> عرض كامل البطاقة بدون أزرار للتصوير (Screenshot)
             </button>
         </div>
 
+        <!-- Fully Visible Card -->
         <div class="paper-card paper-vintage" id="paperCard">
             <div class="paper-top-ribbon"></div>
             <div class="satin-ribbon" id="satinRibbon"></div>
 
             <div class="stamp-box" id="stampBox">
                 <input type="text" class="stamp-input" value="Letters & Love">
-                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
+                <input type="text" class="stamp-input" value="2026" style="font-size:0.5rem;">
             </div>
 
-            <div>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
                 <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
                 <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
-                <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
+            </div>
+
+            <!-- Auto-expanding contenteditable body ensuring all text shows up completely -->
+            <div class="paper-body-editable" id="paperBody" contenteditable="true">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
 
-دمتم لي سندا وفخرا لا ينتهي.</textarea>
-            </div>
+دمتم لي سندا وفخرا لا ينتهي.</div>
 
-            <div>
+            <div style="display:flex; flex-direction:column; position:relative;">
                 <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
                 <div class="wax-seal-btn" id="waxSeal">♛</div>
             </div>
@@ -707,10 +709,10 @@
             <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: عادي')">
                 <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: متوسط')">
+            <div class="modal-option" onclick="setSize('1.2rem', 'حجم الخط: متوسط')">
                 <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير')">
+            <div class="modal-option" onclick="setSize('1.4rem', 'حجم الخط: كبير')">
                 <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
             </div>
         </div>
@@ -720,9 +722,9 @@
     <div class="modal-overlay" id="guideModal">
         <div class="modal-card">
             <h3>إرشادات التصوير والاحتفاظ 💡</h3>
-            <div class="guide-step">١. صممي بطاقتك واكتبي رسالتك الجميلة.</div>
-            <div class="guide-step">٢. اضغطي زر "عرض البطاقة للتصوير المثالي 📸".</div>
-            <div class="guide-step">٣. التقطي الشاشة (Screenshot)، وستظهر البطاقة كاملة 100% بنقاء فائق وبدون أي أزرار أو قص لأطرافها!</div>
+            <div class="guide-step">١. اكتبي رسالتك بحرية وسيتسع الصندوق تلقائياً لكل الكلمات.</div>
+            <div class="guide-step">٢. اضغطي زر "عرض كامل البطاقة بدون أزرار 📸".</div>
+            <div class="guide-step">٣. التقطي الشاشة (Screenshot)، لتظهر رسالتك وجميع كلماتك كاملة وواضحة بدون أي نقصان!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
@@ -796,13 +798,13 @@
         function loadTemplate(type) {
             if(type==='love') {
                 document.getElementById('paperHeader').value = "إلى من استوطنوا القلب والروح...";
-                document.getElementById('paperBody').value = "أكتب لكم هذه الكلمات لأعبر عن أعمق مشاعر الحب والتقدير.\nوجودكم في حياتي هو الأجمل دائمًا، وابتسامتكم هي السر خلف كل لحظة دافئة.";
+                document.getElementById('paperBody').innerText = "أكتب لكم هذه الكلمات لأعبر عن أعمق مشاعر الحب والتقدير.\nوجودكم في حياتي هو الأجمل دائمًا، وابتسامتكم هي السر خلف كل لحظة دافئة.";
             } else if(type==='congrats') {
                 document.getElementById('paperHeader').value = "ألف مبروك من الأعماق! 🎉";
-                document.getElementById('paperBody').value = "يسعدني أن أبعث لكم بأجمل التهاني والتبريكات بمناسبة هذا النجاح والإنجاز المتميز.\nدمتم في تطلع مستمر للقمة!";
+                document.getElementById('paperBody').innerText = "يسعدني أن أبعث لكم بأجمل التهاني والتبريكات بمناسبة هذا النجاح والإنجاز المتميز.\nدمتم في تطلع مستمر للقمة!";
             } else if(type==='thanks') {
                 document.getElementById('paperHeader').value = "رسالة شكر وامتنان 💌";
-                document.getElementById('paperBody').value = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
+                document.getElementById('paperBody').innerText = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
             }
         }
 
