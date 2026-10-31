@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
-    <!-- استدعاء كافة الخطوط المحددة بشكل مباشر وصحيح -->
+    <!-- استدعاء الخطوط العربية الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
@@ -266,7 +266,6 @@
         input:checked + .slider { background-color: var(--burgundy); }
         input:checked + .slider:before { transform: translateX(20px); }
 
-        /* Disabled Controls Overlay Effect */
         .seal-controls {
             transition: opacity 0.3s ease;
         }
@@ -329,18 +328,19 @@
             transition: all 0.3s;
             overflow: hidden;
             font-family: 'Aref Ruqaa', serif;
+            background-color: #F5ECDF;
         }
 
-        .paper-vintage { background: #F5ECDF; color: #4A3E3D; }
-        .paper-pink { background: #FDF0F2; color: #6B1D2F; }
-        .paper-navy { background: #131B24; color: #E6C587; }
-        .paper-white { background: #FFFFFF; color: #2B2B2B; }
+        .paper-vintage { background-color: #F5ECDF !important; color: #4A3E3D !important; }
+        .paper-pink { background-color: #FDF0F2 !important; color: #6B1D2F !important; }
+        .paper-navy { background-color: #131B24 !important; color: #E6C587 !important; }
+        .paper-white { background-color: #FFFFFF !important; color: #2B2B2B !important; }
 
         .paper-top-ribbon {
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 10px;
-            background: var(--burgundy);
+            background-color: var(--burgundy) !important;
         }
 
         .satin-ribbon {
@@ -349,20 +349,19 @@
             right: 40px;
             width: 26px;
             height: 100%;
-            background: rgba(107, 29, 47, 0.15);
+            background-color: rgba(107, 29, 47, 0.15) !important;
             border-left: 1px dashed rgba(107, 29, 47, 0.3);
             border-right: 1px dashed rgba(107, 29, 47, 0.3);
             pointer-events: none;
         }
 
-        /* Customizable Postage Stamp */
         .stamp-box {
             position: absolute;
             top: 24px;
             left: 20px;
             width: 65px;
             height: 70px;
-            background: white;
+            background-color: #FFFFFF !important;
             border: 1.5px dashed #C5A059;
             padding: 4px;
             text-align: center;
@@ -439,15 +438,13 @@
             width: 58px;
             height: 58px;
             border-radius: 50%;
-            background: #D4AF37;
-            color: #591624;
+            background-color: #D4AF37 !important;
+            color: #591624 !important;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 
-                inset 0 0 8px rgba(0,0,0,0.3),
-                0 6px 14px rgba(0,0,0,0.2);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.2);
             border: 2px dashed rgba(255,255,255,0.4);
             cursor: pointer;
         }
@@ -460,7 +457,6 @@
             margin-top: 6px;
         }
 
-        /* Footer Copyright */
         footer {
             margin-top: 15px;
             text-align: center;
@@ -469,7 +465,6 @@
             font-weight: 700;
         }
 
-        /* Modal Dialog Options */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -536,23 +531,57 @@
             cursor: pointer;
         }
 
-        /* PRINT STYLES - ONLY PRINT THE LETTER PAPER */
+        /* FIX PRINT BACKGROUND COLOR & GRAPHICS IN PDF */
         @media print {
+            @page {
+                size: A4 portrait;
+                margin: 15mm;
+            }
+
+            html, body {
+                background: none !important;
+                background-color: #FFFFFF !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
             body * {
-                visibility: hidden;
+                visibility: hidden !important;
             }
+
             #paperCard, #paperCard * {
-                visibility: visible;
+                visibility: visible !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
+
             #paperCard {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                box-shadow: none;
-                border-radius: 0;
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 90% !important;
+                max-width: 550px !important;
+                min-height: 680px !important;
+                box-shadow: none !important;
+                border: 1px solid #E8DFD8 !important;
+                border-radius: 18px !important;
+                margin: 0 auto !important;
             }
+
+            /* FORCE BACKGROUND COLORS ON PRINT */
+            .paper-vintage { background-color: #F5ECDF !important; }
+            .paper-pink { background-color: #FDF0F2 !important; }
+            .paper-navy { background-color: #131B24 !important; }
+            .paper-white { background-color: #FFFFFF !important; }
+
+            .paper-top-ribbon { background-color: #6B1D2F !important; }
+            .satin-ribbon { background-color: rgba(107, 29, 47, 0.15) !important; }
+            .stamp-box { background-color: #FFFFFF !important; }
+            .wax-seal-btn { background-color: #D4AF37 !important; }
         }
     </style>
 </head>
@@ -701,19 +730,19 @@
         <div class="modal-card">
             <h3>اختر نوع الخط العربي ✒️</h3>
             <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة الأصلي')">
-                <span>خط الرقعة الأصلي</span> <div class="radio-dot selected" id="fd1"></div>
+                <span>خط الرقعة الأصلي</span> <div class="radio-dot selected"></div>
             </div>
             <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري الكلاسيكي')">
-                <span>خط الأميري الكلاسيكي</span> <div class="radio-dot" id="fd2"></div>
+                <span>خط الأميري الكلاسيكي</span> <div class="radio-dot"></div>
             </div>
             <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
-                <span>خط كوفي حديث</span> <div class="radio-dot" id="fd3"></div>
+                <span>خط كوفي حديث</span> <div class="radio-dot"></div>
             </div>
             <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال الحديث')">
-                <span>خط تجوال الحديث</span> <div class="radio-dot" id="fd4"></div>
+                <span>خط تجوال الحديث</span> <div class="radio-dot"></div>
             </div>
             <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة الناعم')">
-                <span>خط القاهرة الناعم</span> <div class="radio-dot" id="fd5"></div>
+                <span>خط القاهرة الناعم</span> <div class="radio-dot"></div>
             </div>
         </div>
     </div>
