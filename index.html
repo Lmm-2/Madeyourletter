@@ -2,169 +2,416 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نَظِّمْها</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Letters & Love | استوديو الرسائل والبطاقات الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdfbf7;
-            --nav-bg: #8b5e3c;
-            --card-bg: #ffffff;
-            --text-color: #4b2e2e;
-            --border-color: #e7bc91;
-            --btn-bg: #8b5e3c;
-            --btn-hover: #6d4528;
-            --input-bg: #fff8f0;
-        }
-
-        /* ثيم أنثى */
-        body.theme-female {
-            --bg-color: #fdf6f9;
-            --nav-bg: #b56576;
-            --card-bg: #ffffff;
-            --text-color: #5c3a42;
-            --border-color: #f3c6d1;
-            --btn-bg: #b56576;
-            --btn-hover: #934c5b;
-            --input-bg: #fff9fb;
-        }
-
-        /* ثيم ذكر */
-        body.theme-male {
-            --bg-color: #f4f6f9;
-            --nav-bg: #2c3e50;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --border-color: #cbd5e1;
-            --btn-bg: #3498db;
-            --btn-hover: #2980b9;
-            --input-bg: #ffffff;
-        }
-
-        /* الوضع الليلي العام */
-        body.dark-mode {
-            --bg-color: #121212;
-            --nav-bg: #1f1f1f;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --border-color: #333333;
-            --btn-bg: #d97706;
-            --btn-hover: #b45309;
-            --input-bg: #2a2a2a;
+            --bg-color: #F8F4F0;
+            --panel-bg: #FFFFFF;
+            --accent-gold: #C5A059;
+            --burgundy: #6B1D2F;
+            --pink-light: #FDF0F2;
+            --border-color: #E8DFD8;
+            --shadow: 0 8px 24px rgba(107, 29, 47, 0.06);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-color);
+            color: #332C2B;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            transition: 0.3s;
         }
 
-        nav {
-            background: var(--nav-bg);
+        .app-shell {
             width: 100%;
-            padding: 20px;
-            color: white;
-            text-align: center;
-            font-size: 24px;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* App Header */
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--burgundy);
+            color: var(--accent-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.4rem;
             font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .brand-titles h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.15rem;
+            color: var(--burgundy);
+            line-height: 1.1;
+        }
+
+        .brand-titles p {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-round {
+            background: #FDF9F6;
+            border: 1px solid var(--border-color);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--burgundy);
+        }
+
+        .btn-pill {
+            background: #FDF9F6;
+            border: 1px solid var(--border-color);
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Tool Panel Card */
+        .tool-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-left: 30px;
-            padding-right: 30px;
+            margin-bottom: 14px;
+            border-bottom: 1.5px solid #F8F2EE;
+            padding-bottom: 8px;
         }
 
-        .logout-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 8px;
+        .panel-header h2 {
+            font-size: 1.1rem;
+            color: var(--burgundy);
+            font-weight: 800;
+        }
+
+        .badge-pink {
+            background: var(--pink-light);
+            color: var(--burgundy);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--burgundy);
+            margin: 14px 0 8px;
+            display: block;
+        }
+
+        /* Grid 2 Column */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .opt-card {
+            background: #FAFAF8;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 6px;
+            text-align: center;
             cursor: pointer;
-            font-size: 14px;
-        }
-        .logout-btn:hover {
-            background: rgba(255,255,255,0.4);
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
 
-        .container {
-            max-width: 900px;
+        .opt-card.active {
+            border-color: var(--burgundy);
+            background: #FFF5F7;
+            color: var(--burgundy);
+        }
+
+        .opt-card.navy { background: #131B24; color: #E6C587; border-color: #131B24; }
+        .opt-card.pink { background: #FDF0F2; color: #6B1D2F; border-color: #F8C2CC; }
+
+        .flex-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .custom-select-btn {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 7px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            cursor: pointer;
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .color-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #DDD;
+        }
+
+        /* Toggle Switch */
+        .switch-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #CCC;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: var(--burgundy); }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        .check-box-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: #FAF6F3;
+            padding: 6px 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .btn-template {
+            background: #FAF6F3;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            cursor: pointer;
+        }
+
+        /* Paper Preview Card */
+        .paper-card {
             width: 100%;
-            padding: 30px 20px;
+            min-height: 520px;
+            border-radius: 18px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            flex: 1;
+            justify-content: space-between;
+            transition: all 0.3s;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            position: relative;
+        .paper-vintage { background: #F5ECDF; color: #4A3E3D; }
+        .paper-pink { background: #FDF0F2; color: #6B1D2F; }
+        .paper-navy { background: #131B24; color: #E6C587; }
+        .paper-white { background: #FFFFFF; color: #2B2B2B; }
+
+        .paper-top-bar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 12px;
+            background: var(--burgundy);
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
         }
 
-        .card h2 {
-            color: var(--nav-bg);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 16px;
-            outline: none;
-            background: var(--input-bg);
-            color: var(--text-color);
-        }
-
-        textarea {
-            height: 90px;
-            resize: none;
-        }
-
-        button.action-btn {
-            background: var(--btn-bg);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 15px;
-            font-size: 16px;
+        .stamp-box {
+            position: absolute;
+            top: 24px;
+            left: 18px;
+            width: 52px;
+            height: 64px;
+            background: white;
+            border: 1.5px dashed #C5A059;
+            padding: 3px;
+            text-align: center;
+            font-size: 0.6rem;
             font-weight: bold;
+            color: var(--burgundy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .paper-header {
+            border: none;
+            background: transparent;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: inherit;
+            width: 100%;
+            outline: none;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .paper-date {
+            font-size: 0.72rem;
+            color: #888;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .paper-body {
+            border: none;
+            background: transparent;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: inherit;
+            width: 100%;
+            height: 270px;
+            resize: none;
+            outline: none;
+        }
+
+        .paper-footer {
+            border: none;
+            background: transparent;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: inherit;
+            width: 100%;
+            text-align: right;
+            outline: none;
+        }
+
+        .wax-seal-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #D4AF37;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                inset 0 0 8px rgba(0,0,0,0.3),
+                0 6px 14px rgba(0,0,0,0.2);
+            border: 2px dashed rgba(255,255,255,0.4);
             cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
         }
 
-        button.action-btn:hover {
-            background: var(--btn-hover);
+        .bottom-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: bold;
+            margin-top: 6px;
         }
 
-        #eventModalOverlay {
+        /* Modal Dialog Options */
+        .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(3px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -172,1124 +419,266 @@
             padding: 20px;
         }
 
-        .popup-card {
-            background: var(--card-bg);
-            color: var(--text-color);
-            padding: 30px;
+        .modal-card {
+            background: white;
             border-radius: 20px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            text-align: right;
-            border: 2px solid var(--border-color);
-        }
-
-        .popup-card h2 {
-            color: var(--nav-bg);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        #welcomePopupOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
             padding: 20px;
-        }
-
-        #authScreen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
+            max-width: 340px;
             width: 100%;
-            padding: 20px;
-            max-width: 650px;
-            margin: auto;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .auth-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-            width: 100%;
-            text-align: center;
-        }
-
-        .auth-card h2 {
-            color: var(--nav-bg);
-            margin-bottom: 15px;
-        }
-
-        .gender-select {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .gender-option {
-            flex: 1;
+        .modal-option {
             padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .gender-option.selected {
-            border-color: var(--nav-bg);
-            background: var(--input-bg);
-        }
-
-        .toggle-guide-bar {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            padding: 12px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-            color: var(--nav-bg);
-            margin-bottom: 20px;
-            transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            width: 100%;
-        }
-        .toggle-guide-bar:hover {
-            background: var(--input-bg);
-            border-color: var(--nav-bg);
-        }
-
-        /* الأيقونات الدائرية العائمة (الشمس/القمر فوق، ورابط النسخ تحتها) */
-        .floating-icons-container {
-            position: absolute;
-            left: 20px;
-            bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .circle-icon-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            font-size: 20px;
-            transition: 0.3s;
-        }
-
-        .circle-icon-btn:hover {
-            transform: scale(1.1);
-            background: var(--input-bg);
-            border-color: var(--nav-bg);
-        }
-
-        .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        @media (max-width: 600px) {
-            .sections-grid { grid-template-columns: 1fr; }
-        }
-
-        .section-box {
-            background: var(--input-bg);
-            padding: 20px;
-            border-radius: 16px;
-            border: 2px solid var(--border-color);
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .section-box:hover {
-            transform: translateY(-5px);
-            border-color: var(--nav-bg);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-
-        .section-box h3 {
-            color: var(--nav-bg);
-            font-size: 18px;
-        }
-
-        .back-nav-btn {
-            background: rgba(0,0,0,0.08);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        .back-nav-btn:hover { background: rgba(0,0,0,0.15); }
-
-        .item-card {
-            background: var(--input-bg);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            border-right: 5px solid var(--nav-bg);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .item-details h3 {
-            font-size: 17px;
-            color: var(--nav-bg);
-            margin-bottom: 5px;
-        }
-
-        .item-details p {
-            font-size: 14px;
-            margin-bottom: 3px;
-            line-height: 1.5;
-        }
-
-        .item-actions {
-            display: flex;
-            gap: 6px;
-        }
-
-        .edit-btn {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        .edit-btn:hover { background: #2563eb; }
-
-        .delete-btn {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        .delete-btn:hover { background: #dc2626; }
-
-        .calendar-container {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            margin-top: 15px;
-        }
-
-        .calendar-header {
+            border-bottom: 1px solid #EEE;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: var(--nav-bg);
-            font-size: 18px;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .calendar-day-name {
-            font-weight: bold;
-            color: var(--text-color);
-            opacity: 0.7;
-            font-size: 13px;
-            padding-bottom: 8px;
-            text-align: center;
-        }
-
-        .calendar-cell {
-            min-height: 95px;
-            background: var(--input-bg);
-            border-radius: 10px;
-            padding: 5px;
-            font-size: 12px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .calendar-cell.empty-cell {
-            background: transparent;
-            border: none;
-            pointer-events: none;
-        }
-
-        .calendar-cell .day-num {
-            font-weight: bold;
-            margin-bottom: 4px;
-            font-size: 13px;
-            color: var(--text-color);
-        }
-
-        .calendar-event {
-            font-size: 10px;
-            color: white;
-            padding: 4px 3px;
-            border-radius: 5px;
-            margin-top: 3px;
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: center;
             cursor: pointer;
+            font-size: 0.9rem;
             font-weight: bold;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-        }
-        .calendar-event:hover {
-            opacity: 0.85;
-            transform: scale(1.02);
+            color: var(--burgundy);
         }
 
-        footer {
-            background: var(--nav-bg);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            font-size: 14px;
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: center;
-        }
+        .modal-option:last-child { border-bottom: none; }
+        .radio-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--burgundy); }
+        .radio-dot.selected { background: var(--burgundy); }
     </style>
 </head>
-<body id="mainBody">
+<body>
 
-    <!-- نافذة الدليل المنبثقة -->
-    <div id="welcomePopupOverlay">
-        <div class="popup-card">
-            <h2>📖 دليل استخدام موقع نَظِّمْها</h2>
-            <ul style="padding-right: 20px; font-size: 13px; line-height: 1.8; margin-bottom: 20px; text-align: right;">
-                <li><strong>1. الفكرة والهدف:</strong> منظّمك الخاص المباشر لترتيب جدولك ومواعيدك.</li>
-                <li><strong>2. التقويم التفاعلي:</strong> أي امتحان، طبخة، أو مشوار يظهر في التقويم، يمكنك النقر عليه مباشرة لتعديله أو إلغائه فورا!</li>
-                <li><strong>3. 🔗 نسخ الرابط:</strong> استخدم أيقونة الرابط الدائرية في الواجهة لمشاركته مع الآخرين.</li>
-                <li><strong>4. 🌙☀️ التبديل بين ليل ونهار:</strong> اضغط على أيقونة القمر/الشمس الدائرية للتحويل السريع بين الوضعين.</li>
-            </ul>
-            <button class="action-btn" onclick="closeWelcomePopup()">فهمت، ابدأ ✨</button>
+    <div class="app-shell">
+        <!-- Header -->
+        <header>
+            <div class="brand-box">
+                <div class="brand-icon">L</div>
+                <div class="brand-titles">
+                    <h1>Letters & Love</h1>
+                    <p>استوديو الرسائل والبطاقات الفاخرة</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-round" onclick="window.print()">🖨️</button>
+                <button class="btn-pill" onclick="alert('معاينة الظرف الخارجي جاهزة!')">
+                    <span>✉️</span> معاينة الظرف
+                </button>
+            </div>
+        </header>
+
+        <!-- Tools Panel -->
+        <div class="tool-panel">
+            <div class="panel-header">
+                <h2>أدوات التصميم والتخصيص 🍂</h2>
+                <span class="badge-pink">إصدار فاخر</span>
+            </div>
+
+            <!-- Paper Theme -->
+            <span class="section-title">١. اختر خامة ونمط الورق:</span>
+            <div class="grid-2">
+                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', this)">
+                    📜 ورق معتق (Vintage)
+                </div>
+                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', this)">
+                    🌸 ورق روز أنيق
+                </div>
+                <div class="opt-card" onclick="setPaperTheme('paper-white', this)">
+                    📄 أبيض كلاسيكي
+                </div>
+                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', this)">
+                    ✨ كحلي ملكي وذهبي
+                </div>
+            </div>
+
+            <!-- Font Customization -->
+            <span class="section-title">٢. الخط والتنسيق العربي:</span>
+            <div class="flex-row">
+                <button class="custom-select-btn" onclick="openFontModal()">
+                    <span id="fontLabel">خط الرقعة (الأنيق)</span> <span>˅</span>
+                </button>
+                <button class="custom-select-btn" onclick="openSizeModal()">
+                    <span id="sizeLabel">حجم الخط: متوسط</span> <span>˅</span>
+                </button>
+
+                <div class="flex-row" style="gap:6px; margin-top:5px;">
+                    <span style="font-size:0.75rem; font-weight:bold;">لون النص:</span>
+                    <div class="color-dot" style="background:#6B1D2F;" onclick="setTextColor('#6B1D2F')"></div>
+                    <div class="color-dot" style="background:#131B24;" onclick="setTextColor('#131B24')"></div>
+                    <div class="color-dot" style="background:#C5A059;" onclick="setTextColor('#C5A059')"></div>
+                    <div class="color-dot" style="background:#4A3E3D;" onclick="setTextColor('#4A3E3D')"></div>
+                </div>
+            </div>
+
+            <!-- Wax Seal Toggle & Customizer -->
+            <div class="switch-row">
+                <span class="section-title" style="margin:0;">٣. ختم الشمع الأحمر / الذهبي (Wax Seal):</span>
+                <label class="switch">
+                    <input type="checkbox" id="sealToggle" checked onchange="toggleSeal()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="flex-row" style="margin-top:10px;">
+                <span style="font-size:0.75rem; font-weight:bold;">لون الشمع:</span>
+                <div class="color-dot" style="background:#E89FA9;" onclick="setSealBg('#E89FA9')"></div>
+                <div class="color-dot" style="background:#D4AF37;" onclick="setSealBg('#D4AF37')"></div>
+                <div class="color-dot" style="background:#6B1D2F;" onclick="setSealBg('#6B1D2F')"></div>
+
+                <span style="font-size:0.75rem; font-weight:bold; margin-right:10px;">رمز الختم:</span>
+                <button class="btn-template" onclick="setSealIcon('👑')">👑</button>
+                <button class="btn-template" onclick="setSealIcon('💖')">💖</button>
+                <button class="btn-template" onclick="setSealIcon('🌸')">🌸</button>
+                <button class="btn-template" onclick="setSealIcon('⭐')">⭐</button>
+            </div>
+
+            <!-- Accessories -->
+            <span class="section-title">٤. الزينة والطوابع البريدية:</span>
+            <div class="flex-row">
+                <label class="check-box-label">
+                    <input type="checkbox" id="stampCheck" checked onchange="toggleStamp()"> طابع بريدي كلاسيكي ✉️
+                </label>
+                <label class="check-box-label">
+                    <input type="checkbox" id="ribbonCheck" checked> شريط ستان مزين 🎀
+                </label>
+            </div>
+
+            <!-- Templates -->
+            <span class="section-title">نماذج جاهزة سريعة:</span>
+            <div class="flex-row">
+                <button class="btn-template" onclick="loadTemplate('love')">رسالة حب وشوق 💌</button>
+                <button class="btn-template" onclick="loadTemplate('congrats')">تهنئة مباركة 🎉</button>
+                <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
+            </div>
+        </div>
+
+        <!-- Live Paper Card Display -->
+        <div class="paper-card paper-vintage" id="paperCard">
+            <div class="paper-top-bar"></div>
+
+            <div class="stamp-box" id="stampBox">
+                <span>ROYAL POST</span>
+                <span>2026</span>
+            </div>
+
+            <div>
+                <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
+                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
+                <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
+
+أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
+
+دمتم لي سندا وفخرا لا ينتهي.</textarea>
+            </div>
+
+            <div>
+                <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
+                <div class="wax-seal-btn" id="waxSeal">👑</div>
+            </div>
+        </div>
+
+        <div class="bottom-hint">✨ يمكنك الضغط المباشر على النص داخل الورقة لتعديله وتخصيصه كما تحب!</div>
+    </div>
+
+    <!-- Font Picker Modal -->
+    <div class="modal-overlay" id="fontModal">
+        <div class="modal-card">
+            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة (الأنيق)')">
+                <span>خط الرقعة (الأنيق)</span> <div class="radio-dot selected"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري (الكلاسيكي)')">
+                <span>خط الأميري (الكلاسيكي)</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
+                <span>خط كوفي حديث</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال (ناعم)')">
+                <span>خط تجوال (ناعم)</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة (واضح)')">
+                <span>خط القاهرة (واضح)</span> <div class="radio-dot"></div>
+            </div>
         </div>
     </div>
 
-    <!-- نافذة تفاعل التقويم -->
-    <div id="eventModalOverlay">
-        <div class="popup-card">
-            <h2 id="modalEventTitle">إدارة النشاط</h2>
-            <p id="modalEventDate" style="font-weight: bold; margin-bottom: 8px; font-size: 14px; opacity: 0.8;"></p>
-            <p id="modalEventDesc" style="font-size: 14px; line-height: 1.6; margin-bottom: 20px; background: var(--input-bg); padding: 10px; border-radius: 10px; border: 1px solid var(--border-color);"></p>
-            
-            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                <button class="action-btn" id="modalEditBtn" style="background: #3b82f6; flex: 1;">تعديل ✍️</button>
-                <button class="action-btn" id="modalDeleteBtn" style="background: #ef4444; flex: 1;">حذف 🗑️</button>
+    <!-- Size Picker Modal -->
+    <div class="modal-overlay" id="sizeModal">
+        <div class="modal-card">
+            <div class="modal-option" onclick="setSize('0.95rem', 'حجم الخط: عادي')">
+                <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
             </div>
-            <button class="action-btn" onclick="closeEventModal()" style="background: #6b7280; width: 100%;">إغلاق ✖</button>
+            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: متوسط')">
+                <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
+            </div>
+            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: كبير')">
+                <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير جداً')">
+                <span>حجم الخط: كبير جداً</span> <div class="radio-dot"></div>
+            </div>
         </div>
-    </div>
-
-    <!-- شاشة تسجيل الدخول -->
-    <div id="authScreen" style="display: none;">
-        <div class="auth-card">
-            <h2>✨ أهلاً بك في موقع نَظِّمْها</h2>
-            <p style="margin-bottom: 20px; font-size: 14px; opacity: 0.8;">أدخل اسمك والرقم التعريفي الخاص بك</p>
-            
-            <input type="text" id="userName" placeholder="اسمك الكريم...">
-            <input type="text" id="uniqueId" placeholder="رقم تعريفي خاص بك...">
-            
-            <label style="display: block; text-align: right; margin-bottom: 8px; font-weight: bold; font-size: 14px;">اختر التصنيف:</label>
-            <div class="gender-select">
-                <div class="gender-option" onclick="selectGender('male')" id="maleOpt">ذكر 👨</div>
-                <div class="gender-option" onclick="selectGender('female')" id="femaleOpt">أنثى 👩</div>
-            </div>
-
-            <button class="action-btn" onclick="registerUser()">دخول 🚀</button>
-        </div>
-    </div>
-
-    <!-- لوحة التحكم والأقسام -->
-    <div id="appScreen" style="display: none; width: 100%; flex-direction: column; align-items: center; flex: 1;">
-        <nav>
-            <span id="welcomeMsg">📌 نَظِّمْها</span>
-            <button class="logout-btn" onclick="logout()">خروج</button>
-        </nav>
-
-        <div class="container">
-
-            <!-- الواجهة الرئيسية -->
-            <div id="homeSectionsView" class="card">
-                
-                <!-- الأيقونات الدائرية المطابقة للصورة (القمر/الشمس فوق، وتحتها رابط النسخ) -->
-                <div class="floating-icons-container">
-                    <div class="circle-icon-btn" onclick="toggleNightMode()" id="darkModeToggleBtn" title="التحويل بين الليل والنهار">
-                        🌙
-                    </div>
-                    <div class="circle-icon-btn" onclick="copySiteLink()" title="نسخ رابط الموقع">
-                        🔗
-                    </div>
-                </div>
-
-                <h2 style="text-align: center; margin-bottom: 20px;">اختر القسم الذي تود تنظيمه وإدارته 🤎</h2>
-                
-                <div class="toggle-guide-bar" onclick="openWelcomePopup()">
-                    📖 اضغط هنا لقراءة الدليل وإرشادات الاستخدام
-                </div>
-
-                <div class="sections-grid">
-                    <div class="section-box" onclick="openSection('exams')">
-                        <span style="font-size: 30px;">📚</span>
-                        <h3>الدراسة والامتحانات</h3>
-                    </div>
-                    <div class="section-box" onclick="openSection('cooking')">
-                        <span style="font-size: 30px;">🍳</span>
-                        <h3>الطبخ والأكلات</h3>
-                    </div>
-                    <div class="section-box" onclick="openSection('outings')">
-                        <span style="font-size: 30px;">🚗</span>
-                        <h3>المشاوير والطلعات</h3>
-                    </div>
-                    <div class="section-box" onclick="openSection('tasks')">
-                        <span style="font-size: 30px;">✅</span>
-                        <h3>المهام اليومية</h3>
-                    </div>
-                </div>
-
-                <!-- التقويم الشامل التفاعلي -->
-                <div style="margin-top: 10px; background: var(--card-bg); padding: 15px; border-radius: 15px;">
-                    <div class="calendar-container" style="border: none; padding: 0; margin-top: 0;">
-                        <div class="calendar-header">
-                            <span>📅 التقويم التفاعلي الشامل (يوليو 2026)</span>
-                        </div>
-                        <div class="calendar-grid" id="masterCalendarGrid"></div>
-                    </div>
-
-                    <div class="card" style="margin-top: 20px; border: 1px solid var(--border-color); box-shadow: none;">
-                        <h3 style="color: var(--nav-bg); margin-bottom: 12px; font-size: 18px;">📌 قائمة المهام اليومية السريعة</h3>
-                        <div id="homeTasksList">
-                            <p style="text-align: center; opacity: 0.6; font-size: 14px;">لا توجد مهام مضافة حالياً.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 1. قسم الدراسة والامتحانات -->
-            <div id="examsSection" style="display: none;" class="card">
-                <button class="back-nav-btn" onclick="backToHome()">⬅ العودة للأقسام</button>
-                <h2>📚 قسم الدراسة والامتحانات والتقويم</h2>
-                
-                <div style="background: var(--input-bg); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color);">
-                    <input type="hidden" id="editingExamId" value="">
-                    <input type="text" id="examSubject" placeholder="اسم المادة...">
-                    
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                        <label style="font-size: 14px; font-weight: bold;">اختر لون المادة:</label>
-                        <input type="color" id="examColor" value="#3498db" style="width: 60px; height: 40px; padding: 2px; cursor: pointer; border-radius: 8px;">
-                    </div>
-
-                    <label style="display: block; text-align: right; margin-bottom: 5px; font-size: 14px; font-weight: bold;">تاريخ الامتحان:</label>
-                    <input type="date" id="examDate">
-                    <textarea id="examContent" placeholder="المواضيع المطلوب دراستها..."></textarea>
-                    <button class="action-btn" id="examSubmitBtn" onclick="saveExam()">إضافة المادة للجدول ✨</button>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: var(--nav-bg);">قائمة مواد الامتحانات</h3>
-                <div id="examsList"></div>
-            </div>
-
-            <!-- 2. قسم الطبخ والأكلات -->
-            <div id="cookingSection" style="display: none;" class="card">
-                <button class="back-nav-btn" onclick="backToHome()">⬅ العودة للأقسام</button>
-                <h2>🍳 قسم الطبخ والأكلات</h2>
-                
-                <div style="background: var(--input-bg); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color);">
-                    <input type="hidden" id="editingDishId" value="">
-                    <input type="text" id="dishName" placeholder="اسم الأكلة...">
-                    <label style="display: block; text-align: right; margin-bottom: 5px; font-size: 14px; font-weight: bold;">يوم التحضير:</label>
-                    <input type="date" id="dishDate">
-                    <textarea id="dishIngredients" placeholder="المقادير والمكونات..."></textarea>
-                    <button class="action-btn" id="dishSubmitBtn" onclick="saveDish()">إضافة الطبخة للقائمة 🍲</button>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: var(--nav-bg);">جدول الطبخات والأكلات</h3>
-                <div id="cookingList"></div>
-            </div>
-
-            <!-- 3. قسم المشاوير والطلعات -->
-            <div id="outingsSection" style="display: none;" class="card">
-                <button class="back-nav-btn" onclick="backToHome()">⬅ العودة للأقسام</button>
-                <h2>🚗 قسم المشاوير والطلعات</h2>
-                
-                <div style="background: var(--input-bg); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color);">
-                    <input type="hidden" id="editingOutingId" value="">
-                    <input type="text" id="outingPlace" placeholder="مكان المشوار...">
-                    <label style="display: block; text-align: right; margin-bottom: 5px; font-size: 14px; font-weight: bold;">تاريخ الطلعة:</label>
-                    <input type="date" id="outingDate">
-                    <textarea id="outingNotes" placeholder="ملاحظات الطلعة..."></textarea>
-                    <button class="action-btn" id="outingSubmitBtn" onclick="saveOuting()">إضافة الطلعة للجدول 🗺️</button>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: var(--nav-bg);">قائمة المشاوير والطلعات</h3>
-                <div id="outingsList"></div>
-            </div>
-
-            <!-- 4. قسم المهام اليومية -->
-            <div id="tasksSection" style="display: none;" class="card">
-                <button class="back-nav-btn" onclick="backToHome()">⬅ العودة للأقسام</button>
-                <h2>✅ قسم المهام اليومية</h2>
-                
-                <div style="background: var(--input-bg); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color);">
-                    <input type="hidden" id="editingTaskId" value="">
-                    <input type="text" id="taskName" placeholder="المهمة أو الالتزام...">
-                    <textarea id="taskNotes" placeholder="تفاصيل إضافية..."></textarea>
-                    <button class="action-btn" id="taskSubmitBtn" onclick="saveTask()">إضافة المهمة للقائمة 📌</button>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: var(--nav-bg);">قائمة المهام</h3>
-                <div id="tasksList"></div>
-            </div>
-
-        </div>
-
-        <footer>
-            <p>© 2026 موقع نَظِّمْها الذكي</p>
-            <p style="font-size: 13px; opacity: 0.9;">فكرة وتصميم: لجين 🤍</p>
-        </footer>
     </div>
 
     <script>
-        let selectedGender = '';
-
-        window.onload = function() {
-            let activeUser = localStorage.getItem('activeUniversalUser');
-            if (activeUser) {
-                document.getElementById('welcomePopupOverlay').style.display = 'none';
-                loadUserSession(activeUser);
-            } else {
-                document.getElementById('welcomePopupOverlay').style.display = 'flex';
-                document.getElementById('authScreen').style.display = 'none';
-            }
-        };
-
-        function closeWelcomePopup() {
-            document.getElementById('welcomePopupOverlay').style.display = 'none';
-            let activeUser = localStorage.getItem('activeUniversalUser');
-            if (!activeUser) {
-                document.getElementById('authScreen').style.display = 'flex';
-            }
+        function setPaperTheme(cls, el) {
+            const card = document.getElementById('paperCard');
+            card.className = 'paper-card ' + cls;
+            document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
+            if(el) el.classList.add('active');
         }
 
-        function openWelcomePopup() {
-            document.getElementById('welcomePopupOverlay').style.display = 'flex';
+        function setTextColor(color) {
+            const card = document.getElementById('paperCard');
+            card.style.color = color;
+            document.getElementById('paperHeader').style.color = color;
+            document.getElementById('paperBody').style.color = color;
+            document.getElementById('paperFooter').style.color = color;
         }
 
-        function selectGender(gender) {
-            selectedGender = gender;
-            document.getElementById('maleOpt').classList.remove('selected');
-            document.getElementById('femaleOpt').classList.remove('selected');
-            
-            if (gender === 'male') {
-                document.getElementById('maleOpt').classList.add('selected');
-                document.body.className = 'theme-male';
-            } else {
-                document.getElementById('femaleOpt').classList.add('selected');
-                document.body.className = 'theme-female';
-            }
+        function toggleSeal() {
+            const seal = document.getElementById('waxSeal');
+            seal.style.display = document.getElementById('sealToggle').checked ? 'flex' : 'none';
         }
 
-        function copySiteLink() {
-            let currentUrl = window.location.href;
-            navigator.clipboard.writeText(currentUrl).then(() => {
-                alert("تم نسخ رابط الموقع بنجاح! يمكنك إرساله الآن لأي شخص 📋✨");
-            }).catch(err => {
-                alert("تعذر النسخ تلقائياً، يمكنك نسخه من شريط العنوان.");
-            });
+        function setSealBg(c) {
+            document.getElementById('waxSeal').style.backgroundColor = c;
         }
 
-        function toggleNightMode() {
-            document.body.classList.toggle('dark-mode');
-            let isDark = document.body.classList.contains('dark-mode');
-            let toggleBtn = document.getElementById('darkModeToggleBtn');
-            if (isDark) {
-                toggleBtn.innerHTML = '☀️';
-            } else {
-                toggleBtn.innerHTML = '🌙';
-            }
+        function setSealIcon(icon) {
+            document.getElementById('waxSeal').innerText = icon;
         }
 
-        function registerUser() {
-            let name = document.getElementById('userName').value.trim();
-            let id = document.getElementById('uniqueId').value.trim();
-
-            if (!name || !id) {
-                alert("الرجاء إدخال الاسم والرقم التعريفي.");
-                return;
-            }
-            if (!selectedGender) {
-                alert("الرجاء اختيار التصنيف (ذكر أو أنثى).");
-                return;
-            }
-
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            if (allUsers[id]) {
-                if (allUsers[id].name !== name) {
-                    alert("عذراً! هذا الرقم التعريفي مستخدم من قِبل شخص آخر.");
-                    return;
-                }
-            } else {
-                allUsers[id] = {
-                    name: name,
-                    gender: selectedGender,
-                    exams: [],
-                    cooking: [],
-                    outings: [],
-                    tasks: []
-                };
-                localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-            }
-
-            localStorage.setItem('activeUniversalUser', id);
-            loadUserSession(id);
+        function toggleStamp() {
+            document.getElementById('stampBox').style.display = 
+                document.getElementById('stampCheck').checked ? 'flex' : 'none';
         }
 
-        function loadUserSession(id) {
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let currentUser = allUsers[id];
+        function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
+        function openSizeModal() { document.getElementById('sizeModal').style.display = 'flex'; }
 
-            if (!currentUser) {
-                logout();
-                return;
-            }
-
-            if (currentUser.gender === 'male') {
-                document.body.className = 'theme-male';
-            } else {
-                document.body.className = 'theme-female';
-            }
-
-            document.getElementById('authScreen').style.display = 'none';
-            document.getElementById('appScreen').style.display = 'flex';
-            document.getElementById('welcomeMsg').innerText = `📌 أهلاً بك، ${currentUser.name}`;
-
-            refreshAllData(id);
+        function setFont(fontFamily, label) {
+            const card = document.getElementById('paperCard');
+            card.style.fontFamily = fontFamily;
+            document.getElementById('fontLabel').innerText = label;
+            document.getElementById('fontModal').style.display = 'none';
         }
 
-        function openSection(sectionName) {
-            document.getElementById('homeSectionsView').style.display = 'none';
-            document.getElementById('examsSection').style.display = 'none';
-            document.getElementById('cookingSection').style.display = 'none';
-            document.getElementById('outingsSection').style.display = 'none';
-            document.getElementById('tasksSection').style.display = 'none';
-
-            if (sectionName === 'exams') document.getElementById('examsSection').style.display = 'block';
-            if (sectionName === 'cooking') document.getElementById('cookingSection').style.display = 'block';
-            if (sectionName === 'outings') document.getElementById('outingsSection').style.display = 'block';
-            if (sectionName === 'tasks') document.getElementById('tasksSection').style.display = 'block';
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function setSize(size, label) {
+            document.getElementById('paperBody').style.fontSize = size;
+            document.getElementById('sizeLabel').innerText = label;
+            document.getElementById('sizeModal').style.display = 'none';
         }
 
-        function backToHome() {
-            document.getElementById('examsSection').style.display = 'none';
-            document.getElementById('cookingSection').style.display = 'none';
-            document.getElementById('outingsSection').style.display = 'none';
-            document.getElementById('tasksSection').style.display = 'none';
-            document.getElementById('homeSectionsView').style.display = 'block';
-            
-            let activeId = localStorage.getItem('activeUniversalUser');
-            if (activeId) refreshAllData(activeId);
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function refreshAllData(userId) {
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let user = allUsers[userId];
-
-            displayExams(user.exams);
-            displayCooking(user.cooking);
-            displayOutings(user.outings);
-            displayTasks(user.tasks);
-            buildMasterCalendar(user);
-        }
-
-        function saveExam() {
-            let editId = document.getElementById('editingExamId').value;
-            let subject = document.getElementById('examSubject').value.trim();
-            let color = document.getElementById('examColor').value;
-            let date = document.getElementById('examDate').value;
-            let content = document.getElementById('examContent').value.trim();
-
-            if (!subject || !date || !content) {
-                alert("الرجاء ملء جميع حقول المادة وتاريخ الامتحان والتفاصيل.");
-                return;
+        function loadTemplate(type) {
+            if(type==='love') {
+                document.getElementById('paperHeader').value = "إلى من استوطنوا القلب والروح...";
+                document.getElementById('paperBody').value = "أكتب لكم هذه الكلمات لأعبر عن أعمق مشاعر الحب والتقدير.\nوجودكم في حياتي هو الأجمل دائمًا، وابتسامتكم هي السر خلف كل لحظة دافئة.";
+            } else if(type==='congrats') {
+                document.getElementById('paperHeader').value = "ألف مبروك من الأعماق! 🎉";
+                document.getElementById('paperBody').value = "يسعدني أن أبعث لكم بأجمل التهاني والتبريكات بمناسبة هذا النجاح والإنجاز المتميز.\nدمتم في تطلع مستمر للقمة!";
+            } else if(type==='thanks') {
+                document.getElementById('paperHeader').value = "رسالة شكر وامتنان 💌";
+                document.getElementById('paperBody').value = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
             }
-
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            if (editId) {
-                let item = allUsers[activeId].exams.find(e => e.id == editId);
-                if (item) {
-                    item.subject = subject;
-                    item.color = color;
-                    item.date = date;
-                    item.content = content;
-                }
-                document.getElementById('editingExamId').value = '';
-                document.getElementById('examSubmitBtn').innerText = 'إضافة المادة للجدول ✨';
-            } else {
-                allUsers[activeId].exams.unshift({ id: Date.now(), subject, color, date, content });
-            }
-
-            localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-            document.getElementById('examSubject').value = '';
-            document.getElementById('examDate').value = '';
-            document.getElementById('examContent').value = '';
-            refreshAllData(activeId);
-        }
-
-        function editExam(id) {
-            openSection('exams');
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let item = allUsers[activeId].exams.find(e => e.id == id);
-
-            if (item) {
-                document.getElementById('editingExamId').value = item.id;
-                document.getElementById('examSubject').value = item.subject;
-                document.getElementById('examColor').value = item.color;
-                document.getElementById('examDate').value = item.date;
-                document.getElementById('examContent').value = item.content;
-                document.getElementById('examSubmitBtn').innerText = 'حفظ التعديلات 🔄';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function displayExams(exams) {
-            let listContainer = document.getElementById('examsList');
-            if (exams.length === 0) {
-                listContainer.innerHTML = '<p style="text-align: center; opacity: 0.6;">لا توجد مواد مضافة.</p>';
-                return;
-            }
-
-            let html = '';
-            exams.forEach(ex => {
-                html += `
-                    <div class="item-card" style="border-right-color: ${ex.color};">
-                        <div class="item-details">
-                            <h3><span style="display:inline-block; width:12px; height:12px; background:${ex.color}; border-radius:50%; margin-left:6px;"></span>مادة: ${ex.subject}</h3>
-                            <p><strong>📅 موعد الامتحان:</strong> ${ex.date}</p>
-                            <p><strong>📝 ما يجب دراسته:</strong> ${ex.content}</p>
-                        </div>
-                        <div class="item-actions">
-                            <button class="edit-btn" onclick="editExam(${ex.id})">تعديل</button>
-                            <button class="delete-btn" onclick="deleteItem('exams', ${ex.id})">حذف</button>
-                        </div>
-                    </div>
-                `;
-            });
-            listContainer.innerHTML = html;
-        }
-
-        function showEventModal(title, dateStr, details, type, id) {
-            document.getElementById('modalEventTitle').innerText = title;
-            document.getElementById('modalEventDate').innerText = `📅 التاريخ: ${dateStr}`;
-            document.getElementById('modalEventDesc').innerText = details;
-            
-            document.getElementById('modalEditBtn').onclick = function() {
-                closeEventModal();
-                if (type === 'exam') editExam(id);
-                if (type === 'cooking') editDish(id);
-                if (type === 'outing') editOuting(id);
-            };
-
-            document.getElementById('modalDeleteBtn').onclick = function() {
-                if (confirm("هل أنت متأكد من حذف هذا النشاط؟")) {
-                    if (type === 'exam') deleteItem('exams', id);
-                    if (type === 'cooking') deleteItem('cooking', id);
-                    if (type === 'outing') deleteItem('outings', id);
-                    closeEventModal();
-                }
-            };
-
-            document.getElementById('eventModalOverlay').style.display = 'flex';
-        }
-
-        function closeEventModal() {
-            document.getElementById('eventModalOverlay').style.display = 'none';
-        }
-
-        function buildMasterCalendar(user) {
-            let grid = document.getElementById('masterCalendarGrid');
-            
-            let cellsHTML = `
-                <div class="calendar-day-name">أحد</div>
-                <div class="calendar-day-name">إثنين</div>
-                <div class="calendar-day-name">ثلاثاء</div>
-                <div class="calendar-day-name">أربعاء</div>
-                <div class="calendar-day-name">خميس</div>
-                <div class="calendar-day-name">جمعة</div>
-                <div class="calendar-day-name">سبت</div>
-            `;
-
-            let year = 2026;
-            let month = 6;
-            let firstDayIndex = new Date(year, month, 1).getDay();
-            let totalDays = new Date(year, month + 1, 0).getDate();
-
-            for (let i = 0; i < firstDayIndex; i++) {
-                cellsHTML += `<div class="calendar-cell empty-cell"></div>`;
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                let formattedDay = day < 10 ? '0' + day : day;
-                let currentDateStr = `2026-07-${formattedDay}`;
-                let evHTML = '';
-
-                let matchingExams = user.exams.filter(e => e.date === currentDateStr);
-                matchingExams.forEach(m => {
-                    let safeTitle = m.subject.replace(/'/g, "\\'");
-                    let safeDesc = (m.content || 'لا توجد تفاصيل').replace(/'/g, "\\'");
-                    evHTML += `<div class="calendar-event" style="background: ${m.color};" onclick="showEventModal('امتحان: ${safeTitle}', '${currentDateStr}', '${safeDesc}', 'exam', ${m.id})">📚 ${m.subject}</div>`;
-                });
-
-                let matchingCooking = user.cooking.filter(c => c.date === currentDateStr);
-                matchingCooking.forEach(c => {
-                    let safeTitle = c.name.replace(/'/g, "\\'");
-                    let safeDesc = (c.ingredients || 'لا توجد مقادير').replace(/'/g, "\\'");
-                    evHTML += `<div class="calendar-event" style="background: #e67e22;" onclick="showEventModal('طبخة: ${safeTitle}', '${currentDateStr}', 'المقادير: ${safeDesc}', 'cooking', ${c.id})">🍳 ${c.name}</div>`;
-                });
-
-                let matchingOutings = user.outings.filter(o => o.date === currentDateStr);
-                matchingOutings.forEach(o => {
-                    let safeTitle = o.place.replace(/'/g, "\\'");
-                    let safeDesc = (o.notes || 'لا توجد ملاحظات').replace(/'/g, "\\'");
-                    evHTML += `<div class="calendar-event" style="background: #2980b9;" onclick="showEventModal('مشوار: ${safeTitle}', '${currentDateStr}', 'ملاحظات: ${safeDesc}', 'outing', ${o.id})">🚗 ${o.place}</div>`;
-                });
-
-                cellsHTML += `
-                    <div class="calendar-cell">
-                        <span class="day-num">${day}</span>
-                        ${evHTML}
-                    </div>
-                `;
-            }
-            
-            grid.innerHTML = cellsHTML;
-
-            let homeTasksContainer = document.getElementById('homeTasksList');
-            if (!user.tasks || user.tasks.length === 0) {
-                homeTasksContainer.innerHTML = '<p style="text-align: center; opacity: 0.6; font-size: 14px;">لا توجد مهام مضافة حالياً.</p>';
-            } else {
-                let tHtml = '';
-                user.tasks.forEach(t => {
-                    tHtml += `
-                        <div class="item-card" style="margin-bottom: 8px; padding: 12px; border-right: 5px solid var(--nav-bg);">
-                            <div class="item-details">
-                                <h3 style="font-size: 15px; color: var(--nav-bg);">✅ ${t.name}</h3>
-                                <p style="font-size: 13px; margin-top: 3px;">${t.notes ? t.notes : 'لا توجد تفاصيل'}</p>
-                            </div>
-                            <div class="item-actions">
-                                <button class="edit-btn" onclick="editTask(${t.id})" style="padding: 4px 8px; font-size: 11px;">تعديل</button>
-                                <button class="delete-btn" onclick="deleteItem('tasks', ${t.id})" style="padding: 4px 8px; font-size: 11px;">حذف</button>
-                            </div>
-                        </div>
-                    `;
-                });
-                homeTasksContainer.innerHTML = tHtml;
-            }
-        }
-
-        function saveDish() {
-            let editId = document.getElementById('editingDishId').value;
-            let name = document.getElementById('dishName').value.trim();
-            let date = document.getElementById('dishDate').value;
-            let ingredients = document.getElementById('dishIngredients').value.trim();
-
-            if (!name || !date || !ingredients) {
-                alert("الرجاء ملء جميع حقول الطبخة وتاريخ التحضير والمقادير.");
-                return;
-            }
-
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            if (editId) {
-                let item = allUsers[activeId].cooking.find(c => c.id == editId);
-                if (item) {
-                    item.name = name;
-                    item.date = date;
-                    item.ingredients = ingredients;
-                }
-                document.getElementById('editingDishId').value = '';
-                document.getElementById('dishSubmitBtn').innerText = 'إضافة الطبخة للقائمة 🍲';
-            } else {
-                allUsers[activeId].cooking.unshift({ id: Date.now(), name, date, ingredients });
-            }
-
-            localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-            document.getElementById('dishName').value = '';
-            document.getElementById('dishDate').value = '';
-            document.getElementById('dishIngredients').value = '';
-            refreshAllData(activeId);
-        }
-
-        function editDish(id) {
-            openSection('cooking');
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let item = allUsers[activeId].cooking.find(c => c.id == id);
-
-            if (item) {
-                document.getElementById('editingDishId').value = item.id;
-                document.getElementById('dishName').value = item.name;
-                document.getElementById('dishDate').value = item.date;
-                document.getElementById('dishIngredients').value = item.ingredients;
-                document.getElementById('dishSubmitBtn').innerText = 'حفظ التعديلات 🔄';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function displayCooking(cooking) {
-            let listContainer = document.getElementById('cookingList');
-            if (cooking.length === 0) {
-                listContainer.innerHTML = '<p style="text-align: center; opacity: 0.6;">لا توجد طبخات مسجلة.</p>';
-                return;
-            }
-
-            let html = '';
-            cooking.forEach(c => {
-                html += `
-                    <div class="item-card" style="border-right-color: #e67e22;">
-                        <div class="item-details">
-                            <h3>🍳 الطبخة: ${c.name}</h3>
-                            <p><strong>📅 موعد التحضير:</strong> ${c.date}</p>
-                            <p><strong>🛒 المقادير:</strong> ${c.ingredients}</p>
-                        </div>
-                        <div class="item-actions">
-                            <button class="edit-btn" onclick="editDish(${c.id})">تعديل</button>
-                            <button class="delete-btn" onclick="deleteItem('cooking', ${c.id})">حذف</button>
-                        </div>
-                    </div>
-                `;
-            });
-            listContainer.innerHTML = html;
-        }
-
-        function saveOuting() {
-            let editId = document.getElementById('editingOutingId').value;
-            let place = document.getElementById('outingPlace').value.trim();
-            let date = document.getElementById('outingDate').value;
-            let notes = document.getElementById('outingNotes').value.trim();
-
-            if (!place || !date) {
-                alert("الرجاء إدخال مكان المشوار وتاريخه.");
-                return;
-            }
-
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            if (editId) {
-                let item = allUsers[activeId].outings.find(o => o.id == editId);
-                if (item) {
-                    item.place = place;
-                    item.date = date;
-                    item.notes = notes;
-                }
-                document.getElementById('editingOutingId').value = '';
-                document.getElementById('outingSubmitBtn').innerText = 'إضافة الطلعة للجدول 🗺️';
-            } else {
-                allUsers[activeId].outings.unshift({ id: Date.now(), place, date, notes });
-            }
-
-            localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-            document.getElementById('outingPlace').value = '';
-            document.getElementById('outingDate').value = '';
-            document.getElementById('outingNotes').value = '';
-            refreshAllData(activeId);
-        }
-
-        function editOuting(id) {
-            openSection('outings');
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let item = allUsers[activeId].outings.find(o => o.id == id);
-
-            if (item) {
-                document.getElementById('editingOutingId').value = item.id;
-                document.getElementById('outingPlace').value = item.place;
-                document.getElementById('outingDate').value = item.date;
-                document.getElementById('outingNotes').value = item.notes;
-                document.getElementById('outingSubmitBtn').innerText = 'حفظ التعديلات 🔄';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function displayOutings(outings) {
-            let listContainer = document.getElementById('outingsList');
-            if (outings.length === 0) {
-                listContainer.innerHTML = '<p style="text-align: center; opacity: 0.6;">لا توجد مشاوير مسجلة.</p>';
-                return;
-            }
-
-            let html = '';
-            outings.forEach(o => {
-                html += `
-                    <div class="item-card" style="border-right-color: #2980b9;">
-                        <div class="item-details">
-                            <h3>🚗 المكان: ${o.place}</h3>
-                            <p><strong>📅 الموعد:</strong> ${o.date}</p>
-                            <p><strong>📝 ملاحظات:</strong> ${o.notes ? o.notes : 'لا توجد'}</p>
-                        </div>
-                        <div class="item-actions">
-                            <button class="edit-btn" onclick="editOuting(${o.id})">تعديل</button>
-                            <button class="delete-btn" onclick="deleteItem('outings', ${o.id})">حذف</button>
-                        </div>
-                    </div>
-                `;
-            });
-            listContainer.innerHTML = html;
-        }
-
-        function saveTask() {
-            let editId = document.getElementById('editingTaskId').value;
-            let name = document.getElementById('taskName').value.trim();
-            let notes = document.getElementById('taskNotes').value.trim();
-
-            if (!name) {
-                alert("الرجاء إدخال المهمة.");
-                return;
-            }
-
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            if (editId) {
-                let item = allUsers[activeId].tasks.find(t => t.id == editId);
-                if (item) {
-                    item.name = name;
-                    item.notes = notes;
-                }
-                document.getElementById('editingTaskId').value = '';
-                document.getElementById('taskSubmitBtn').innerText = 'إضافة المهمة للقائمة 📌';
-            } else {
-                allUsers[activeId].tasks.unshift({ id: Date.now(), name, notes });
-            }
-
-            localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-            document.getElementById('taskName').value = '';
-            document.getElementById('taskNotes').value = '';
-            refreshAllData(activeId);
-        }
-
-        function editTask(id) {
-            openSection('tasks');
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-            let item = allUsers[activeId].tasks.find(t => t.id == id);
-
-            if (item) {
-                document.getElementById('editingTaskId').value = item.id;
-                document.getElementById('taskName').value = item.name;
-                document.getElementById('taskNotes').value = item.notes;
-                document.getElementById('taskSubmitBtn').innerText = 'حفظ التعديلات 🔄';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function displayTasks(tasks) {
-            let listContainer = document.getElementById('tasksList');
-            if (tasks.length === 0) {
-                listContainer.innerHTML = '<p style="text-align: center; opacity: 0.6;">لا توجد مهام مضافة.</p>';
-                return;
-            }
-
-            let html = '';
-            tasks.forEach(t => {
-                html += `
-                    <div class="item-card">
-                        <div class="item-details">
-                            <h3>✅ المهمة: ${t.name}</h3>
-                            <p><strong>📝 التفاصيل:</strong> ${t.notes ? t.notes : 'لا توجد'}</p>
-                        </div>
-                        <div class="item-actions">
-                            <button class="edit-btn" onclick="editTask(${t.id})">تعديل</button>
-                            <button class="delete-btn" onclick="deleteItem('tasks', ${t.id})">حذف</button>
-                        </div>
-                    </div>
-                `;
-            });
-            listContainer.innerHTML = html;
-        }
-
-        function deleteItem(type, id) {
-            let activeId = localStorage.getItem('activeUniversalUser');
-            let allUsers = JSON.parse(localStorage.getItem('allUniversalUsersDB')) || {};
-
-            allUsers[activeId][type] = allUsers[activeId][type].filter(item => item.id !== id);
-            localStorage.setItem('allUniversalUsersDB', JSON.stringify(allUsers));
-
-            refreshAllData(activeId);
-        }
-
-        function logout() {
-            localStorage.removeItem('activeUniversalUser');
-            document.getElementById('appScreen').style.display = 'none';
-            document.getElementById('authScreen').style.display = 'flex';
-            document.body.className = '';
-            document.getElementById('userName').value = '';
-            document.getElementById('uniqueId').value = '';
-            selectedGender = '';
-            document.getElementById('maleOpt').classList.remove('selected');
-            document.getElementById('femaleOpt').classList.remove('selected');
         }
     </script>
-
 </body>
 </html>
