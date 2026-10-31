@@ -1,831 +1,855 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Letters & Love | بطاقات A4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
+    <!-- استدعاء كافة الخطوط العربية الفاخرة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- مكتبة التصدير -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #F8F4F0;
+            --panel-bg: #FFFFFF;
+            --accent-gold: #C5A059;
+            --burgundy: #6B1D2F;
+            --pink-light: #FDF0F2;
+            --border-color: #E8DFD8;
+            --shadow: 0 10px 28px rgba(107, 29, 47, 0.08);
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        body {
+            background-color: var(--bg-color);
+            color: #332C2B;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-<style>
-:root {
-    --burgundy: #6B1D2F;
-    --gold: #C5A059;
-    --bg: #F8F4F0;
-    --border: #E8DFD8;
-}
+        .app-shell {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
 
-body {
-    margin: 0;
-    padding: 16px;
-    background: var(--bg);
-    color: #332C2B;
-    font-family: 'Cairo', sans-serif;
-}
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-button, input, textarea {
-    font: inherit;
-}
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--burgundy);
+            color: var(--accent-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-button {
-    cursor: pointer;
-}
+        .brand-titles h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.25rem;
+            color: var(--burgundy);
+            line-height: 1.1;
+        }
 
-.app-shell {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-}
+        .brand-titles p {
+            font-size: 0.68rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-}
+        .btn-round {
+            background: #FDF9F6;
+            border: 1.5px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--burgundy);
+        }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .btn-pill {
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            box-shadow: 0 4px 14px rgba(107, 29, 47, 0.25);
+        }
 
-.brand-icon {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    background: var(--burgundy);
-    color: var(--gold);
-    border-radius: 12px;
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 28px;
-}
+        .tool-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
 
-.brand h1 {
-    margin: 0;
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 24px;
-    color: var(--burgundy);
-}
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            border-bottom: 1.5px solid #F8F2EE;
+            padding-bottom: 8px;
+        }
 
-.brand p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--gold);
-    font-weight: bold;
-}
+        .panel-header h2 {
+            font-size: 1.15rem;
+            color: var(--burgundy);
+            font-weight: 800;
+        }
 
-.panel {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 20px;
-}
+        .badge-pink {
+            background: var(--pink-light);
+            color: var(--burgundy);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
 
-.panel h2 {
-    color: var(--burgundy);
-    font-size: 19px;
-    margin: 0 0 14px;
-}
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--burgundy);
+            margin: 14px 0 8px;
+            display: block;
+        }
 
-.section-title {
-    display: block;
-    margin: 16px 0 8px;
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--burgundy);
-}
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-}
+        .opt-card {
+            background: #FAFAF8;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 6px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-}
+        .opt-card.active {
+            border-color: var(--burgundy);
+            background: #FFF5F7;
+            color: var(--burgundy);
+        }
 
-.opt, .small-btn {
-    border: 1px solid var(--border);
-    background: #FAF6F3;
-    color: var(--burgundy);
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 13px;
-}
+        .opt-card.navy { background: #131B24; color: #E6C587; border-color: #131B24; }
+        .opt-card.pink { background: #FDF0F2; color: #6B1D2F; border-color: #F8C2CC; }
 
-.opt.active {
-    border: 2px solid var(--burgundy);
-    background: #FFF5F7;
-}
+        .flex-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-.opt.navy {
-    background: #131B24;
-    color: #E6C587;
-}
+        .custom-select-btn {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            cursor: pointer;
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.opt.pink {
-    background: #FDF0F2;
-}
+        .color-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #DDD;
+        }
 
-select, .text-input {
-    width: 100%;
-    min-width: 0;
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: white;
-    color: var(--burgundy);
-}
+        .switch-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-.control {
-    flex: 1 1 180px;
-}
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
 
-.color-dot {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid white;
-    outline: 1px solid #DDD;
-    cursor: pointer;
-}
+        .switch input { opacity: 0; width: 0; height: 0; }
 
-.check-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    background: #FAF6F3;
-    padding: 8px 10px;
-    border-radius: 10px;
-}
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #CCC;
+            transition: .3s;
+            border-radius: 24px;
+        }
 
-.btn-main {
-    width: 100%;
-    border: 0;
-    border-radius: 12px;
-    background: var(--burgundy);
-    color: white;
-    padding: 13px;
-    font-weight: bold;
-    font-size: 15px;
-}
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
 
-.btn-main:disabled {
-    opacity: .6;
-    cursor: wait;
-}
+        input:checked + .slider { background-color: var(--burgundy); }
+        input:checked + .slider:before { transform: translateX(20px); }
 
-.note {
-    font-size: 12px;
-    color: #777;
-    line-height: 1.8;
-    margin-top: 10px;
-}
+        .seal-controls {
+            transition: opacity 0.3s ease;
+        }
 
-/* معاينة البطاقة */
+        .seal-controls.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
 
-.preview-wrap {
-    width: 100%;
-    overflow: auto;
-    padding: 12px;
-    background: #E9E3DE;
-    border-radius: 16px;
-}
+        .check-box-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: #FAF6F3;
+            padding: 6px 10px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            cursor: pointer;
+        }
 
-.paper-card {
-    position: relative;
-    width: 100%;
-    max-width: 794px;
-    aspect-ratio: 210 / 297;
-    margin: auto;
-    padding: 8.8% 7%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    background: #F5ECDF;
-    color: #4A3E3D;
-    box-shadow: 0 8px 24px #00000018;
-    font-family: 'Aref Ruqaa', serif;
-}
+        .btn-template {
+            background: #FAF6F3;
+            border: 1.5px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            cursor: pointer;
+        }
 
-.paper-vintage {
-    background: #F5ECDF;
-    color: #4A3E3D;
-}
+        .btn-seal-symbol {
+            background: #FFFDF9;
+            border: 1.5px solid var(--border-color);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--burgundy);
+        }
 
-.paper-pink {
-    background: #FDF0F2;
-    color: #6B1D2F;
-}
+        /* Paper Card Container */
+        .paper-card {
+            width: 100%;
+            min-height: 520px;
+            border-radius: 18px;
+            padding: 35px 28px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s;
+            overflow: hidden;
+            font-family: 'Aref Ruqaa', serif;
+            background-color: #F5ECDF;
+        }
 
-.paper-navy {
-    background: #131B24;
-    color: #E6C587;
-}
+        .paper-vintage { background-color: #F5ECDF !important; color: #4A3E3D !important; }
+        .paper-pink { background-color: #FDF0F2 !important; color: #6B1D2F !important; }
+        .paper-navy { background-color: #131B24 !important; color: #E6C587 !important; }
+        .paper-white { background-color: #FFFFFF !important; color: #2B2B2B !important; }
 
-.paper-white {
-    background: #FFFFFF;
-    color: #2B2B2B;
-}
+        .paper-top-ribbon {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 10px;
+            background-color: var(--burgundy) !important;
+        }
 
-.paper-top-ribbon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background: var(--burgundy);
-}
+        .satin-ribbon {
+            position: absolute;
+            top: 0;
+            right: 45px;
+            width: 26px;
+            height: 100%;
+            background-color: rgba(107, 29, 47, 0.15) !important;
+            border-left: 1px dashed rgba(107, 29, 47, 0.3);
+            border-right: 1px dashed rgba(107, 29, 47, 0.3);
+            pointer-events: none;
+        }
 
-.satin-ribbon {
-    position: absolute;
-    top: 0;
-    right: 8%;
-    width: 3.3%;
-    height: 100%;
-    background: #6B1D2F18;
-    border-left: 1px dashed #6B1D2F50;
-    border-right: 1px dashed #6B1D2F50;
-    pointer-events: none;
-}
+        .stamp-box {
+            position: absolute;
+            top: 28px;
+            left: 28px !important;
+            right: auto !important;
+            width: 65px;
+            height: 70px;
+            background-color: #FFFFFF !important;
+            border: 1.5px dashed #C5A059;
+            padding: 4px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-.stamp-box {
-    position: absolute;
-    top: 6%;
-    left: 7%;
-    width: 15%;
-    height: 7%;
-    background: white;
-    border: 1.5px dashed var(--gold);
-    padding: 3px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 4px 8px #00000010;
-}
+        .stamp-input {
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-size: 0.6rem;
+            font-weight: bold;
+            color: var(--burgundy);
+            width: 100%;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
+        }
 
-.stamp-input {
-    width: 100%;
-    border: 0;
-    background: transparent;
-    text-align: center;
-    outline: 0;
-    font-size: clamp(6px, 1.2vw, 11px);
-    font-weight: bold;
-    color: var(--burgundy);
-    font-family: 'Cairo', sans-serif;
-}
+        .paper-header {
+            border: none;
+            background: transparent;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: inherit;
+            width: 100%;
+            outline: none;
+            margin-top: 15px;
+            text-align: right;
+            font-family: inherit;
+        }
 
-.paper-header {
-    display: block;
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    font-size: clamp(15px, 3vw, 30px);
-    font-weight: bold;
-    text-align: right;
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
+        .paper-date {
+            font-size: 0.75rem;
+            color: inherit;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            display: block;
+            font-family: 'Cairo', sans-serif;
+        }
 
-.paper-date {
-    display: block;
-    font-family: 'Cairo', sans-serif;
-    font-size: clamp(9px, 1.5vw, 15px);
-    opacity: .7;
-    margin-bottom: 20px;
-}
+        .paper-body {
+            border: none;
+            background: transparent;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: inherit;
+            width: 100%;
+            height: 240px;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+        }
 
-.paper-body {
-    display: block;
-    width: 100%;
-    height: 45%;
-    resize: none;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: inherit;
-    font-family: inherit;
-    font-size: clamp(13px, 2.6vw, 26px);
-    line-height: 1.9;
-    overflow: auto;
-}
+        .paper-footer {
+            border: none;
+            background: transparent;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: inherit;
+            width: 100%;
+            text-align: right;
+            outline: none;
+            font-family: inherit;
+        }
 
-.paper-footer {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    font-size: clamp(12px, 2.3vw, 23px);
-    font-weight: bold;
-    text-align: right;
-}
+        .wax-seal-btn {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background-color: #D4AF37 !important;
+            color: #591624 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.2);
+            border: 2px dashed rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
 
-.wax-seal {
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    width: 8%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #D4AF37;
-    color: #591624;
-    display: grid;
-    place-items: center;
-    font-size: clamp(18px, 3.5vw, 34px);
-    box-shadow: inset 0 0 8px #0005, 0 6px 14px #0003;
-    border: 2px dashed #FFFFFF66;
-}
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(3px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
 
-footer {
-    text-align: center;
-    color: #888;
-    font-size: 12px;
-    margin: 20px 0;
-}
+        .modal-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 360px;
+            width: 100%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
 
-/* إخفاء أدوات التحكم عند التنزيل */
+        .modal-card h3 {
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
 
-#exportArea {
-    position: fixed;
-    left: -10000px;
-    top: 0;
-    width: 794px;
-    pointer-events: none;
-}
+        .modal-option {
+            padding: 12px;
+            border-bottom: 1px solid #EEE;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--burgundy);
+        }
 
-#exportArea .paper-card {
-    width: 794px;
-    height: 1123px;
-    max-width: none;
-    aspect-ratio: auto;
-    margin: 0;
-    box-shadow: none;
-    padding: 70px 56px;
-}
+        .modal-option:last-child { border-bottom: none; }
+        .radio-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--burgundy); }
+        .radio-dot.selected { background: var(--burgundy); }
 
-#exportArea .paper-header {
-    font-size: 30px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
+        .btn-full {
+            width: 100%;
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
 
-#exportArea .paper-date {
-    font-size: 15px;
-}
-
-#exportArea .paper-body {
-    height: 505px;
-    font-size: 26px;
-    line-height: 1.9;
-    overflow: hidden;
-}
-
-#exportArea .paper-footer {
-    font-size: 23px;
-}
-
-#exportArea .stamp-input {
-    font-size: 11px;
-}
-
-#exportArea .wax-seal {
-    font-size: 34px;
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 8px;
-    }
-
-    .panel {
-        padding: 12px;
-    }
-
-    .paper-card {
-        padding: 8.8% 7%;
-    }
-}
-</style>
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #888;
+            font-weight: 700;
+        }
+    </style>
 </head>
-
 <body>
-<div class="app-shell">
 
-<header>
-    <div class="brand">
-        <div class="brand-icon">L</div>
-        <div>
-            <h1>Letters & Love</h1>
-            <p>الرسائل والبطاقات الفاخرة</p>
+    <div class="app-shell">
+        <header>
+            <div class="brand-box">
+                <div class="brand-icon">L</div>
+                <div class="brand-titles">
+                    <h1>Letters & Love</h1>
+                    <p>الرسائل والبطاقات الفاخرة</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-round" onclick="openGuideModal()" title="إرشادات الاستخدام">💡</button>
+            </div>
+        </header>
+
+        <div class="tool-panel">
+            <div class="panel-header">
+                <h2>أدوات التصميم والتخصيص 🍂</h2>
+                <span class="badge-pink">إصدار فاخر</span>
+            </div>
+
+            <span class="section-title">١. اختر خامة ونمط الورق:</span>
+            <div class="grid-2">
+                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', this)">
+                    📜 ورق معتق (Vintage)
+                </div>
+                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', this)">
+                    🌸 ورق روز أنيق
+                </div>
+                <div class="opt-card" onclick="setPaperTheme('paper-white', this)">
+                    📄 أبيض كلاسيكي
+                </div>
+                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', this)">
+                    ✨ كحلي ملكي وذهبي
+                </div>
+            </div>
+
+            <span class="section-title">٢. الخط والتنسيق العربي:</span>
+            <div class="flex-row">
+                <button class="custom-select-btn" onclick="openFontModal()">
+                    <span id="fontLabel">خط الرقعة الأصلي</span> <span>˅</span>
+                </button>
+                <button class="custom-select-btn" onclick="openSizeModal()">
+                    <span id="sizeLabel">حجم الخط: متوسط</span> <span>˅</span>
+                </button>
+
+                <div class="flex-row" style="gap:6px; margin-top:5px;">
+                    <span style="font-size:0.75rem; font-weight:bold;">لون النص:</span>
+                    <div class="color-dot" style="background:#6B1D2F;" onclick="setTextColor('#6B1D2F')"></div>
+                    <div class="color-dot" style="background:#131B24;" onclick="setTextColor('#131B24')"></div>
+                    <div class="color-dot" style="background:#C5A059;" onclick="setTextColor('#C5A059')"></div>
+                    <div class="color-dot" style="background:#4A3E3D;" onclick="setTextColor('#4A3E3D')"></div>
+                </div>
+            </div>
+
+            <div class="switch-row">
+                <span class="section-title" style="margin:0;">٣. ختم الشمع الأحمر / الذهبي (Wax Seal):</span>
+                <label class="switch">
+                    <input type="checkbox" id="sealToggle" checked onchange="toggleSeal()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="flex-row seal-controls" id="sealControlsGroup" style="margin-top:10px;">
+                <span style="font-size:0.75rem; font-weight:bold;">لون الشمع:</span>
+                <div class="color-dot" style="background:#E89FA9;" onclick="setSealBg('#E89FA9')"></div>
+                <div class="color-dot" style="background:#D4AF37;" onclick="setSealBg('#D4AF37')"></div>
+                <div class="color-dot" style="background:#6B1D2F;" onclick="setSealBg('#6B1D2F')"></div>
+
+                <span style="font-size:0.75rem; font-weight:bold; margin-right:10px;">رمز الختم:</span>
+                <button class="btn-seal-symbol" onclick="setSealIcon('♛')">♛</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('❦')">❦</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('⚜')">⚜</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('✦')">✦</button>
+            </div>
+
+            <span class="section-title">٤. الزينة والطوابع البريدية:</span>
+            <div class="flex-row">
+                <label class="check-box-label">
+                    <input type="checkbox" id="stampCheck" checked onchange="toggleStamp()"> طابع بريدي كلاسيكي ✉️
+                </label>
+                <label class="check-box-label">
+                    <input type="checkbox" id="ribbonCheck" checked onchange="toggleRibbon()"> شريط ستان مزين 🎀
+                </label>
+            </div>
+
+            <span class="section-title">نماذج جاهزة سريعة:</span>
+            <div class="flex-row">
+                <button class="btn-template" onclick="loadTemplate('love')">رسالة حب وشوق 💌</button>
+                <button class="btn-template" onclick="loadTemplate('congrats')">تهنئة مباركة 🎉</button>
+                <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
+            </div>
+
+            <span class="section-title" style="margin-top: 18px;">التحويل والتصدير الذكي:</span>
+            <button class="btn-pill" onclick="generateSmartExport()">
+                <span>🎨</span> توليد صورة البطاقة الصافية (تصدير كـ PNG)
+            </button>
         </div>
-    </div>
-    <span>💌</span>
-</header>
 
-<section class="panel">
-    <h2>أدوات التصميم والتخصيص</h2>
-
-    <span class="section-title">١. اختاري نمط الورق</span>
-    <div class="grid">
-        <button class="opt active" onclick="setTheme('paper-vintage',this)">📜 ورق معتق</button>
-        <button class="opt pink" onclick="setTheme('paper-pink',this)">🌸 ورق روز</button>
-        <button class="opt" onclick="setTheme('paper-white',this)">📄 أبيض كلاسيكي</button>
-        <button class="opt navy" onclick="setTheme('paper-navy',this)">✨ كحلي وذهبي</button>
-    </div>
-
-    <span class="section-title">٢. الخط والحجم</span>
-    <div class="row">
-        <div class="control">
-            <select id="fontChoice" onchange="setFont()">
-                <option value="'Aref Ruqaa',serif">خط الرقعة</option>
-                <option value="'Amiri',serif">خط الأميري</option>
-                <option value="'Reem Kufi',sans-serif">خط كوفي</option>
-                <option value="'Tajawal',sans-serif">خط تجوال</option>
-                <option value="'Cairo',sans-serif">خط القاهرة</option>
-            </select>
-        </div>
-        <div class="control">
-            <select id="sizeChoice" onchange="setSize()">
-                <option value="21">حجم عادي</option>
-                <option value="26" selected>حجم متوسط</option>
-                <option value="30">حجم كبير</option>
-            </select>
-        </div>
-    </div>
-
-    <span class="section-title">لون النص</span>
-    <div class="row">
-        <button class="color-dot" style="background:#6B1D2F" onclick="setTextColor('#6B1D2F')"></button>
-        <button class="color-dot" style="background:#131B24" onclick="setTextColor('#131B24')"></button>
-        <button class="color-dot" style="background:#C5A059" onclick="setTextColor('#C5A059')"></button>
-        <button class="color-dot" style="background:#4A3E3D" onclick="setTextColor('#4A3E3D')"></button>
-    </div>
-
-    <span class="section-title">٣. الزخارف</span>
-    <div class="row">
-        <label class="check-label">
-            <input type="checkbox" id="stampCheck" checked onchange="toggleStamp()">
-            طابع بريدي
-        </label>
-        <label class="check-label">
-            <input type="checkbox" id="ribbonCheck" checked onchange="toggleRibbon()">
-            شريط ستان
-        </label>
-        <label class="check-label">
-            <input type="checkbox" id="sealCheck" checked onchange="toggleSeal()">
-            ختم الشمع
-        </label>
-    </div>
-
-    <span class="section-title">لون الختم ورمزه</span>
-    <div class="row">
-        <button class="color-dot" style="background:#E89FA9" onclick="setSealBg('#E89FA9')"></button>
-        <button class="color-dot" style="background:#D4AF37" onclick="setSealBg('#D4AF37')"></button>
-        <button class="color-dot" style="background:#6B1D2F" onclick="setSealBg('#6B1D2F')"></button>
-        <button class="small-btn" onclick="setSealIcon('♛')">♛</button>
-        <button class="small-btn" onclick="setSealIcon('❦')">❦</button>
-        <button class="small-btn" onclick="setSealIcon('⚜')">⚜</button>
-        <button class="small-btn" onclick="setSealIcon('✦')">✦</button>
-    </div>
-
-    <span class="section-title">٤. نماذج جاهزة</span>
-    <div class="row">
-        <button class="small-btn" onclick="loadTemplate('love')">رسالة حب</button>
-        <button class="small-btn" onclick="loadTemplate('congrats')">تهنئة</button>
-        <button class="small-btn" onclick="loadTemplate('thanks')">شكر وامتنان</button>
-    </div>
-
-    <span class="section-title">٥. محتوى البطاقة</span>
-
-    <label class="section-title" for="headerInput">العنوان</label>
-    <input class="text-input" id="headerInput" value="بسم الله الرحمن الرحيم" oninput="syncText()">
-
-    <label class="section-title" for="dateInput">التاريخ</label>
-    <input class="text-input" id="dateInput" value="٣١ أكتوبر ٢٠٢٦" oninput="syncText()">
-
-    <label class="section-title" for="bodyInput">نص الرسالة</label>
-    <textarea class="text-input" id="bodyInput" rows="7" oninput="syncText()">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
-
-أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
-
-دمتم لي سنداً وفخراً لا ينتهي.</textarea>
-
-    <label class="section-title" for="footerInput">التوقيع</label>
-    <input class="text-input" id="footerInput" value="مُرسلة بكل حب، مُحبتك الدائم ❤️" oninput="syncText()">
-
-    <span class="section-title">الطابع البريدي</span>
-    <input class="text-input" id="stampInput" value="Letters & Love" oninput="syncText()">
-
-    <span class="section-title">رمز الطابع</span>
-    <input class="text-input" id="stampYearInput" value="2026" oninput="syncText()">
-
-    <p class="note">يمكنك تعديل النصوص مباشرة داخل البطاقة أيضًا. تأكدي من أن الرسالة تناسب المساحة قبل التنزيل.</p>
-</section>
-
-<section class="panel">
-    <h2>معاينة البطاقة</h2>
-
-    <div class="preview-wrap">
         <div class="paper-card paper-vintage" id="paperCard">
             <div class="paper-top-ribbon"></div>
             <div class="satin-ribbon" id="satinRibbon"></div>
 
             <div class="stamp-box" id="stampBox">
-                <input class="stamp-input" id="stampPreview" value="Letters & Love">
-                <input class="stamp-input" id="yearPreview" value="2026">
+                <input type="text" class="stamp-input" value="Letters & Love">
+                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
             </div>
 
             <div>
-                <input class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                <span class="paper-date" id="paperDate">٣١ أكتوبر ٢٠٢٦</span>
+                <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
+                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
                 <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
 
-دمتم لي سنداً وفخراً لا ينتهي.</textarea>
+دمتم لي سندا وفخرا لا ينتهي.</textarea>
             </div>
 
             <div>
-                <input class="paper-footer" id="paperFooter" value="مُرسلة بكل حب، مُحبتك الدائم ❤️">
+                <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
+                <div class="wax-seal-btn" id="waxSeal">♛</div>
             </div>
+        </div>
 
-            <div class="wax-seal" id="waxSeal">♛</div>
+        <footer>
+            Letters & Love © 2026 – مصمم بصنع الحب والأناقة 🌿
+        </footer>
+    </div>
+
+    <!-- Font Picker Modal -->
+    <div class="modal-overlay" id="fontModal">
+        <div class="modal-card">
+            <h3>اختر نوع الخط العربي ✒️</h3>
+            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة الأصلي')">
+                <span>خط الرقعة الأصلي</span> <div class="radio-dot selected"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري الكلاسيكي')">
+                <span>خط الأميري الكلاسيكي</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
+                <span>خط كوفي حديث</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال الحديث')">
+                <span>خط تجوال الحديث</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة الناعم')">
+                <span>خط القاهرة الناعم</span> <div class="radio-dot"></div>
+            </div>
         </div>
     </div>
 
-    <div class="row" style="margin-top:14px">
-        <button class="btn-main" id="downloadBtn" onclick="downloadCard()">📥 تنزيل البطاقة كاملة بصيغة PNG</button>
+    <!-- Size Picker Modal -->
+    <div class="modal-overlay" id="sizeModal">
+        <div class="modal-card">
+            <h3>اختر حجم النص 📏</h3>
+            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: عادي')">
+                <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
+            </div>
+            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: متوسط')">
+                <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
+            </div>
+            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير')">
+                <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
+            </div>
+        </div>
     </div>
 
-    <p class="note">الصورة تُنزّل بمقاس A4 عمودي، بدقة 300 DPI تقريبًا، دون أدوات التعديل أو خلفية المعاينة.</p>
-</section>
-
-<footer>Letters & Love © 2026 – صُمّم بكل حب وأناقة</footer>
-</div>
-
-<!-- نسخة مخصصة للتصدير -->
-<div id="exportArea" aria-hidden="true">
-    <div class="paper-card paper-vintage" id="exportCard">
-        <div class="paper-top-ribbon"></div>
-        <div class="satin-ribbon" id="exportRibbon"></div>
-
-        <div class="stamp-box" id="exportStamp">
-            <input class="stamp-input" id="exportStampText" value="Letters & Love">
-            <input class="stamp-input" id="exportYear" value="2026">
+    <!-- Guide Modal -->
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal-card">
+            <h3>إرشادات التصميم والتحميل 💡</h3>
+            <div class="guide-step">١. اكتبوا رسالتكم وحددوا الخط ولون الورق.</div>
+            <div class="guide-step">٢. اضغطوا "توليد صورة البطاقة الصافية 🎨".</div>
+            <div class="guide-step">٣. ستفتح صفحة التوليد لتأخذوا الصورة كاملة بدقة فائقة وبدون أي قص لأطرف الورقة!</div>
+            <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
-
-        <div>
-            <div class="paper-header" id="exportHeader"></div>
-            <span class="paper-date" id="exportDate"></span>
-            <div class="paper-body" id="exportBody"></div>
-        </div>
-
-        <div>
-            <div class="paper-footer" id="exportFooter"></div>
-        </div>
-
-        <div class="wax-seal" id="exportSeal">♛</div>
     </div>
-</div>
 
-<script>
-const card = document.getElementById('paperCard');
-
-function setTheme(theme, button) {
-    card.className = 'paper-card ' + theme;
-
-    document.querySelectorAll('.opt').forEach(item => {
-        item.classList.remove('active');
-    });
-
-    button.classList.add('active');
-    syncExport();
-}
-
-function setFont() {
-    const font = document.getElementById('fontChoice').value;
-    card.style.fontFamily = font;
-    document.getElementById('paperBody').style.fontFamily = font;
-    document.getElementById('paperHeader').style.fontFamily = font;
-    document.getElementById('paperFooter').style.fontFamily = font;
-    syncExport();
-}
-
-function setSize() {
-    const size = document.getElementById('sizeChoice').value;
-    document.getElementById('paperBody').style.fontSize = size + 'px';
-    syncExport();
-}
-
-function setTextColor(color) {
-    card.style.color = color;
-    document.getElementById('paperHeader').style.color = color;
-    document.getElementById('paperBody').style.color = color;
-    document.getElementById('paperFooter').style.color = color;
-    syncExport();
-}
-
-function setSealBg(color) {
-    document.getElementById('waxSeal').style.backgroundColor = color;
-    syncExport();
-}
-
-function setSealIcon(symbol) {
-    document.getElementById('waxSeal').textContent = symbol;
-    syncExport();
-}
-
-function toggleSeal() {
-    document.getElementById('waxSeal').style.display =
-        document.getElementById('sealCheck').checked ? 'grid' : 'none';
-    syncExport();
-}
-
-function toggleStamp() {
-    document.getElementById('stampBox').style.display =
-        document.getElementById('stampCheck').checked ? 'flex' : 'none';
-    syncExport();
-}
-
-function toggleRibbon() {
-    document.getElementById('satinRibbon').style.display =
-        document.getElementById('ribbonCheck').checked ? 'block' : 'none';
-    syncExport();
-}
-
-function syncText() {
-    document.getElementById('paperHeader').value =
-        document.getElementById('headerInput').value;
-
-    document.getElementById('paperDate').textContent =
-        document.getElementById('dateInput').value;
-
-    document.getElementById('paperBody').value =
-        document.getElementById('bodyInput').value;
-
-    document.getElementById('paperFooter').value =
-        document.getElementById('footerInput').value;
-
-    document.getElementById('stampPreview').value =
-        document.getElementById('stampInput').value;
-
-    document.getElementById('yearPreview').value =
-        document.getElementById('stampYearInput').value;
-
-    syncExport();
-}
-
-function loadTemplate(type) {
-    const templates = {
-        love: {
-            header: 'إلى من استوطنوا القلب والروح...',
-            body: 'أكتب لكم هذه الكلمات لأعبر عن أعمق مشاعر الحب والتقدير.\nوجودكم في حياتي هو الأجمل دائماً، وابتسامتكم هي السر خلف كل لحظة دافئة.',
-            footer: 'بكل حب وامتنان ❤️'
-        },
-        congrats: {
-            header: 'ألف مبروك من الأعماق! 🎉',
-            body: 'يسعدني أن أبعث لكم بأجمل التهاني والتبريكات بمناسبة هذا النجاح والإنجاز المتميز.\nدمتم في تطلع مستمر للقمة!',
-            footer: 'مع أطيب التهاني'
-        },
-        thanks: {
-            header: 'رسالة شكر وامتنان 💌',
-            body: 'كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.',
-            footer: 'مع خالص الشكر والتقدير'
+    <script>
+        function setPaperTheme(cls, el) {
+            const card = document.getElementById('paperCard');
+            card.className = 'paper-card ' + cls;
+            document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
+            if(el) el.classList.add('active');
         }
-    };
 
-    const t = templates[type];
+        function setTextColor(color) {
+            const card = document.getElementById('paperCard');
+            card.style.color = color;
+            document.getElementById('paperHeader').style.color = color;
+            document.getElementById('paperBody').style.color = color;
+            document.getElementById('paperFooter').style.color = color;
+        }
 
-    document.getElementById('headerInput').value = t.header;
-    document.getElementById('bodyInput').value = t.body;
-    document.getElementById('footerInput').value = t.footer;
+        function toggleSeal() {
+            const isChecked = document.getElementById('sealToggle').checked;
+            const seal = document.getElementById('waxSeal');
+            const controls = document.getElementById('sealControlsGroup');
+            seal.style.display = isChecked ? 'flex' : 'none';
+            controls.classList.toggle('disabled', !isChecked);
+        }
 
-    syncText();
-}
+        function setSealBg(c) {
+            document.getElementById('waxSeal').style.backgroundColor = c;
+        }
 
-function syncExport() {
-    const exportCard = document.getElementById('exportCard');
+        function setSealIcon(icon) {
+            document.getElementById('waxSeal').innerText = icon;
+        }
 
-    exportCard.className = card.className;
-    exportCard.style.color = card.style.color;
-    exportCard.style.fontFamily = card.style.fontFamily;
+        function toggleStamp() {
+            document.getElementById('stampBox').style.display = document.getElementById('stampCheck').checked ? 'flex' : 'none';
+        }
 
-    const exportHeader = document.getElementById('exportHeader');
-    exportHeader.textContent = document.getElementById('paperHeader').value;
-    exportHeader.style.color = document.getElementById('paperHeader').style.color;
-    exportHeader.style.fontFamily = document.getElementById('paperHeader').style.fontFamily;
+        function toggleRibbon() {
+            document.getElementById('satinRibbon').style.display = document.getElementById('ribbonCheck').checked ? 'block' : 'none';
+        }
 
-    const exportBody = document.getElementById('exportBody');
-    exportBody.textContent = document.getElementById('paperBody').value;
-    exportBody.style.color = document.getElementById('paperBody').style.color;
-    exportBody.style.fontFamily = document.getElementById('paperBody').style.fontFamily;
-    exportBody.style.fontSize = document.getElementById('paperBody').style.fontSize;
+        function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
+        function openSizeModal() { document.getElementById('sizeModal').style.display = 'flex'; }
+        function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
+        function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
 
-    const exportFooter = document.getElementById('exportFooter');
-    exportFooter.textContent = document.getElementById('paperFooter').value;
-    exportFooter.style.color = document.getElementById('paperFooter').style.color;
-    exportFooter.style.fontFamily = document.getElementById('paperFooter').style.fontFamily;
+        function setFont(fontFamily, label) {
+            const card = document.getElementById('paperCard');
+            const body = document.getElementById('paperBody');
+            const header = document.getElementById('paperHeader');
+            const footer = document.getElementById('paperFooter');
 
-    document.getElementById('exportDate').textContent =
-        document.getElementById('paperDate').textContent;
+            card.style.fontFamily = fontFamily;
+            body.style.fontFamily = fontFamily;
+            header.style.fontFamily = fontFamily;
+            footer.style.fontFamily = fontFamily;
 
-    document.getElementById('exportStampText').value =
-        document.getElementById('stampPreview').value;
+            document.getElementById('fontLabel').innerText = label;
+            document.getElementById('fontModal').style.display = 'none';
+        }
 
-    document.getElementById('exportYear').value =
-        document.getElementById('yearPreview').value;
+        function setSize(size, label) {
+            document.getElementById('paperBody').style.fontSize = size;
+            document.getElementById('sizeLabel').innerText = label;
+            document.getElementById('sizeModal').style.display = 'none';
+        }
 
-    document.getElementById('exportStamp').style.display =
-        document.getElementById('stampBox').style.display;
-
-    document.getElementById('exportRibbon').style.display =
-        document.getElementById('satinRibbon').style.display;
-
-    const seal = document.getElementById('exportSeal');
-    const sourceSeal = document.getElementById('waxSeal');
-
-    seal.style.display = sourceSeal.style.display;
-    seal.style.backgroundColor = sourceSeal.style.backgroundColor;
-    seal.textContent = sourceSeal.textContent;
-}
-
-async function downloadCard() {
-    const button = document.getElementById('downloadBtn');
-
-    if (typeof html2canvas === 'undefined') {
-        alert('تعذّر تحميل أداة تنزيل الصور. تأكدي من اتصال الإنترنت ثم أعيدي المحاولة.');
-        return;
-    }
-
-    button.disabled = true;
-    button.textContent = '⏳ جارٍ تجهيز البطاقة...';
-
-    try {
-        syncExport();
-
-        await document.fonts.ready;
-
-        const canvas = await html2canvas(
-            document.getElementById('exportCard'),
-            {
-                scale: 3.125,
-                width: 794,
-                height: 1123,
-                backgroundColor: null,
-                useCORS: true,
-                logging: false,
-                scrollX: 0,
-                scrollY: 0
+        function loadTemplate(type) {
+            if(type==='love') {
+                document.getElementById('paperHeader').value = "إلى من استوطنوا القلب والروح...";
+                document.getElementById('paperBody').value = "أكتب لكم هذه الكلمات لأعبر عن أعمق مشاعر الحب والتقدير.\nوجودكم في حياتي هو الأجمل دائمًا، وابتسامتكم هي السر خلف كل لحظة دافئة.";
+            } else if(type==='congrats') {
+                document.getElementById('paperHeader').value = "ألف مبروك من الأعماق! 🎉";
+                document.getElementById('paperBody').value = "يسعدني أن أبعث لكم بأجمل التهاني والتبريكات بمناسبة هذا النجاح والإنجاز المتميز.\nدمتم في تطلع مستمر للقمة!";
+            } else if(type==='thanks') {
+                document.getElementById('paperHeader').value = "رسالة شكر وامتنان 💌";
+                document.getElementById('paperBody').value = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
             }
-        );
+        }
 
-        const link = document.createElement('a');
-        link.download = 'Letters-and-Love-A4.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-
-    } catch (error) {
-        alert('حدث خطأ أثناء تجهيز الصورة. أعيدي المحاولة بعد قليل.');
-        console.error(error);
-    } finally {
-        button.disabled = false;
-        button.textContent = '📥 تنزيل البطاقة كاملة بصيغة PNG';
-    }
-}
-
-syncText();
-</script>
+        /* SMART DEDICATED EXPORT FUNCTION */
+        function generateSmartExport() {
+            const card = document.getElementById('paperCard');
+            
+            window.html2canvas(card, {
+                scale: 3,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: null,
+                width: card.offsetWidth,
+                height: card.offsetHeight
+            }).then(canvas => {
+                const imageUrl = canvas.toDataURL('image/png');
+                
+                // Open export window
+                const exportWin = window.open('', '_blank');
+                exportWin.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="ar" dir="rtl">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Letters & Love - تنزيل البطاقة</title>
+                        <style>
+                            body {
+                                margin: 0;
+                                padding: 20px 12px;
+                                background-color: #F8F4F0;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                font-family: 'Cairo', sans-serif;
+                            }
+                            .notice {
+                                background: #6B1D2F;
+                                color: white;
+                                padding: 12px 20px;
+                                border-radius: 14px;
+                                font-size: 0.85rem;
+                                font-weight: bold;
+                                text-align: center;
+                                margin-bottom: 16px;
+                                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                            }
+                            .img-frame {
+                                max-width: 440px;
+                                width: 100%;
+                                border-radius: 18px;
+                                overflow: hidden;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                            }
+                            img {
+                                width: 100%;
+                                height: auto;
+                                display: block;
+                            }
+                            .btn-dl {
+                                margin-top: 16px;
+                                background: #C5A059;
+                                color: white;
+                                text-decoration: none;
+                                padding: 12px 24px;
+                                border-radius: 12px;
+                                font-weight: bold;
+                                font-size: 0.9rem;
+                                display: inline-block;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="notice">✨ اضغطي على الصورة ضغطة مطوّلة (Long Press) واختاري "حفظ الصورة"!</div>
+                        <div class="img-frame">
+                            <img src="${imageUrl}" alt="Letters & Love Card">
+                        </div>
+                        <a href="${imageUrl}" download="Letters-and-Love-Card.png" class="btn-dl">📥 حفظ مباشر للبطاقة</a>
+                    </body>
+                    </html>
+                `);
+            });
+        }
+    </script>
 </body>
 </html>
