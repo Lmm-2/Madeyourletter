@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
-    <!-- استدعاء الخطوط العربية الفاخرة -->
+    <!-- استدعاء كافة الخطوط العربية الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- مكتبات التحويل المباشر لـ PDF وصورة -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
         :root {
@@ -48,7 +45,6 @@
             gap: 16px;
         }
 
-        /* App Header */
         header {
             background: white;
             border-radius: 20px;
@@ -93,12 +89,6 @@
             font-weight: 700;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         .btn-round {
             background: #FDF9F6;
             border: 1.5px solid var(--border-color);
@@ -127,7 +117,6 @@
             gap: 5px;
         }
 
-        /* Tool Panel Card */
         .tool-panel {
             background: white;
             border-radius: 24px;
@@ -358,7 +347,6 @@
             pointer-events: none;
         }
 
-        /* Fixed Stamp strictly on LEFT */
         .stamp-box {
             position: absolute;
             top: 24px;
@@ -454,20 +442,10 @@
             cursor: pointer;
         }
 
-        .bottom-hint {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #888;
-            font-weight: bold;
-            margin-top: 6px;
-        }
-
-        footer {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 0.78rem;
-            color: #888;
-            font-weight: 700;
+        .export-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
         }
 
         .modal-overlay {
@@ -536,17 +514,18 @@
             cursor: pointer;
         }
 
-        .export-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #888;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
 
     <div class="app-shell">
-        <!-- Header -->
         <header>
             <div class="brand-box">
                 <div class="brand-icon">L</div>
@@ -560,31 +539,28 @@
             </div>
         </header>
 
-        <!-- Tools Panel -->
         <div class="tool-panel">
             <div class="panel-header">
                 <h2>أدوات التصميم والتخصيص 🍂</h2>
                 <span class="badge-pink">إصدار فاخر</span>
             </div>
 
-            <!-- Paper Theme -->
             <span class="section-title">١. اختر خامة ونمط الورق:</span>
             <div class="grid-2">
-                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', this)">
+                <div class="opt-card active" onclick="setPaperTheme('paper-vintage', '#F5ECDF', '#4A3E3D', this)">
                     📜 ورق معتق (Vintage)
                 </div>
-                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', this)">
+                <div class="opt-card pink" onclick="setPaperTheme('paper-pink', '#FDF0F2', '#6B1D2F', this)">
                     🌸 ورق روز أنيق
                 </div>
-                <div class="opt-card" onclick="setPaperTheme('paper-white', this)">
+                <div class="opt-card" onclick="setPaperTheme('paper-white', '#FFFFFF', '#2B2B2B', this)">
                     📄 أبيض كلاسيكي
                 </div>
-                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', this)">
+                <div class="opt-card navy" onclick="setPaperTheme('paper-navy', '#131B24', '#E6C587', this)">
                     ✨ كحلي ملكي وذهبي
                 </div>
             </div>
 
-            <!-- Font Customization -->
             <span class="section-title">٢. الخط والتنسيق العربي:</span>
             <div class="flex-row">
                 <button class="custom-select-btn" onclick="openFontModal()">
@@ -603,7 +579,6 @@
                 </div>
             </div>
 
-            <!-- Wax Seal Toggle & Customizer -->
             <div class="switch-row">
                 <span class="section-title" style="margin:0;">٣. ختم الشمع الأحمر / الذهبي (Wax Seal):</span>
                 <label class="switch">
@@ -625,7 +600,6 @@
                 <button class="btn-seal-symbol" onclick="setSealIcon('✦')">✦</button>
             </div>
 
-            <!-- Accessories -->
             <span class="section-title">٤. الزينة والطوابع البريدية:</span>
             <div class="flex-row">
                 <label class="check-box-label">
@@ -636,7 +610,6 @@
                 </label>
             </div>
 
-            <!-- Templates -->
             <span class="section-title">نماذج جاهزة سريعة:</span>
             <div class="flex-row">
                 <button class="btn-template" onclick="loadTemplate('love')">رسالة حب وشوق 💌</button>
@@ -644,27 +617,24 @@
                 <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
             </div>
 
-            <!-- Direct Export Buttons (PDF & Image) -->
             <span class="section-title">حفظ وتصدير البطاقة الفاخرة:</span>
             <div class="export-actions">
-                <button class="btn-pill" style="flex:1; justify-content:center; padding: 10px;" onclick="downloadPDF()">📥 تحميل كملف PDF</button>
-                <button class="btn-pill" style="flex:1; justify-content:center; padding: 10px; background:var(--accent-gold);" onclick="downloadImage()">🖼️ حفظ كصورة PNG</button>
+                <button class="btn-pill" style="flex:1; justify-content:center; padding: 12px;" onclick="exportHighResCard()">🖼️ تحميل البطاقة عالية الجودة (PNG)</button>
             </div>
         </div>
 
-        <!-- Live Paper Card Display -->
         <div class="paper-card paper-vintage" id="paperCard">
             <div class="paper-top-ribbon"></div>
             <div class="satin-ribbon" id="satinRibbon"></div>
 
             <div class="stamp-box" id="stampBox">
-                <input type="text" class="stamp-input" value="Letters & Love">
-                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
+                <input type="text" class="stamp-input" id="stampLine1" value="Letters & Love">
+                <input type="text" class="stamp-input" id="stampLine2" value="2026" style="font-size:0.55rem;">
             </div>
 
             <div>
                 <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
+                <span class="paper-date" id="paperDate">٣١ أكتوبر ٢٠٢٦</span>
                 <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
@@ -678,9 +648,6 @@
             </div>
         </div>
 
-        <div class="bottom-hint">✨ يمكنك الضغط المباشر على النص داخل الورقة لتعديله وتخصيصه كما تحب!</div>
-
-        <!-- Footer Copyright -->
         <footer>
             Letters & Love © 2026 – مصمم بصنع الحب والأناقة 🌿
         </footer>
@@ -690,19 +657,19 @@
     <div class="modal-overlay" id="fontModal">
         <div class="modal-card">
             <h3>اختر نوع الخط العربي ✒️</h3>
-            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة الأصلي')">
+            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'Aref Ruqaa', 'خط الرقعة الأصلي')">
                 <span>خط الرقعة الأصلي</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري الكلاسيكي')">
+            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'Amiri', 'خط الأميري الكلاسيكي')">
                 <span>خط الأميري الكلاسيكي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
+            <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'Reem Kufi', 'خط كوفي حديث')">
                 <span>خط كوفي حديث</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال الحديث')">
+            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'Tajawal', 'خط تجوال الحديث')">
                 <span>خط تجوال الحديث</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة الناعم')">
+            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'Cairo', 'خط القاهرة الناعم')">
                 <span>خط القاهرة الناعم</span> <div class="radio-dot"></div>
             </div>
         </div>
@@ -712,17 +679,14 @@
     <div class="modal-overlay" id="sizeModal">
         <div class="modal-card">
             <h3>اختر حجم النص 📏</h3>
-            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: عادي')">
+            <div class="modal-option" onclick="setSize('1.05rem', 22, 'حجم الخط: عادي')">
                 <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.2rem', 'حجم الخط: متوسط')">
+            <div class="modal-option" onclick="setSize('1.2rem', 26, 'حجم الخط: متوسط')">
                 <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.35rem', 'حجم الخط: كبير')">
+            <div class="modal-option" onclick="setSize('1.35rem', 30, 'حجم الخط: كبير')">
                 <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
-            </div>
-            <div class="modal-option" onclick="setSize('1.55rem', 'حجم الخط: كبير جداً')">
-                <span>حجم الخط: كبير جداً</span> <div class="radio-dot"></div>
             </div>
         </div>
     </div>
@@ -733,21 +697,30 @@
             <h3>إرشادات التصميم والتحميل 💡</h3>
             <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
             <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
-            <div class="guide-step">٣. اكتبوا الرسالة بشكل مباشر على الورقة أو من النماذج الجاهزة.</div>
-            <div class="guide-step">٤. اضغطوا زر "تحميل PDF" أو "حفظ كصورة" لحفظ البطاقة بصفحة واحدة فوراً!</div>
+            <div class="guide-step">٣. اضغطوا زر التصدير لتحميل بطاقتكم بنقاء فائق كصورة أو ملف بصفحة واحدة!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
 
     <script>
-        function setPaperTheme(cls, el) {
+        let currentBg = '#F5ECDF';
+        let currentTextColor = '#4A3E3D';
+        let currentFontFamily = 'Aref Ruqaa';
+        let currentFontSizePx = 26;
+        let sealColor = '#D4AF37';
+
+        function setPaperTheme(cls, bg, textColor, el) {
+            currentBg = bg;
+            currentTextColor = textColor;
             const card = document.getElementById('paperCard');
             card.className = 'paper-card ' + cls;
             document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
             if(el) el.classList.add('active');
+            setTextColor(textColor);
         }
 
         function setTextColor(color) {
+            currentTextColor = color;
             const card = document.getElementById('paperCard');
             card.style.color = color;
             document.getElementById('paperHeader').style.color = color;
@@ -757,18 +730,12 @@
 
         function toggleSeal() {
             const isChecked = document.getElementById('sealToggle').checked;
-            const seal = document.getElementById('waxSeal');
-            const controls = document.getElementById('sealControlsGroup');
-            
-            seal.style.display = isChecked ? 'flex' : 'none';
-            if (isChecked) {
-                controls.classList.remove('disabled');
-            } else {
-                controls.classList.add('disabled');
-            }
+            document.getElementById('waxSeal').style.display = isChecked ? 'flex' : 'none';
+            document.getElementById('sealControlsGroup').classList.toggle('disabled', !isChecked);
         }
 
         function setSealBg(c) {
+            sealColor = c;
             document.getElementById('waxSeal').style.backgroundColor = c;
         }
 
@@ -777,13 +744,11 @@
         }
 
         function toggleStamp() {
-            document.getElementById('stampBox').style.display = 
-                document.getElementById('stampCheck').checked ? 'flex' : 'none';
+            document.getElementById('stampBox').style.display = document.getElementById('stampCheck').checked ? 'flex' : 'none';
         }
 
         function toggleRibbon() {
-            document.getElementById('satinRibbon').style.display = 
-                document.getElementById('ribbonCheck').checked ? 'block' : 'none';
+            document.getElementById('satinRibbon').style.display = document.getElementById('ribbonCheck').checked ? 'block' : 'none';
         }
 
         function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
@@ -791,23 +756,17 @@
         function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
         function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
 
-        function setFont(fontFamily, label) {
-            const card = document.getElementById('paperCard');
-            const body = document.getElementById('paperBody');
-            const header = document.getElementById('paperHeader');
-            const footer = document.getElementById('paperFooter');
-
-            card.style.fontFamily = fontFamily;
-            body.style.fontFamily = fontFamily;
-            header.style.fontFamily = fontFamily;
-            footer.style.fontFamily = fontFamily;
-
+        function setFont(fontCss, fontName, label) {
+            currentFontFamily = fontName;
+            const elements = [document.getElementById('paperCard'), document.getElementById('paperHeader'), document.getElementById('paperBody'), document.getElementById('paperFooter')];
+            elements.forEach(el => el.style.fontFamily = fontCss);
             document.getElementById('fontLabel').innerText = label;
             document.getElementById('fontModal').style.display = 'none';
         }
 
-        function setSize(size, label) {
-            document.getElementById('paperBody').style.fontSize = size;
+        function setSize(sizeCss, pxSize, label) {
+            currentFontSizePx = pxSize;
+            document.getElementById('paperBody').style.fontSize = sizeCss;
             document.getElementById('sizeLabel').innerText = label;
             document.getElementById('sizeModal').style.display = 'none';
         }
@@ -825,29 +784,107 @@
             }
         }
 
-        // Direct Download as PDF Function
-        function downloadPDF() {
-            const element = document.getElementById('paperCard');
-            window.html2canvas(element, { scale: 2, useCORS: true }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-                pdf.addImage(imgData, 'PNG', 0, 10, pdfWidth, pdfHeight);
-                pdf.save('Letters-and-Love-Card.pdf');
-            });
-        }
+        /* NATIVE HIGH-RESOLUTION CANVAS EXPORT (NATIVE RENDERER) */
+        function exportHighResCard() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const width = 800;
+            const height = 1100;
 
-        // Direct Download as Image Function
-        function downloadImage() {
-            const element = document.getElementById('paperCard');
-            window.html2canvas(element, { scale: 2, useCORS: true }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'Letters-and-Love-Card.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
+            canvas.width = width;
+            canvas.height = height;
+
+            // 1. Background
+            ctx.fillStyle = currentBg;
+            ctx.fillRect(0, 0, width, height);
+
+            // 2. Top Ribbon
+            ctx.fillStyle = '#6B1D2F';
+            ctx.fillRect(0, 0, width, 16);
+
+            // 3. Satin Ribbon
+            if (document.getElementById('ribbonCheck').checked) {
+                ctx.fillStyle = 'rgba(107, 29, 47, 0.12)';
+                ctx.fillRect(width - 90, 0, 45, height);
+                ctx.strokeStyle = 'rgba(107, 29, 47, 0.25)';
+                ctx.setLineDash([6, 6]);
+                ctx.beginPath();
+                ctx.moveTo(width - 90, 0); ctx.lineTo(width - 90, height);
+                ctx.moveTo(width - 45, 0); ctx.lineTo(width - 45, height);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // 4. Stamp Box (Fixed Top-Left)
+            if (document.getElementById('stampCheck').checked) {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(40, 40, 110, 125);
+                ctx.strokeStyle = '#C5A059';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([4, 4]);
+                ctx.strokeRect(40, 40, 110, 125);
+                ctx.setLineDash([]);
+
+                ctx.fillStyle = '#6B1D2F';
+                ctx.font = 'bold 13px Cairo, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(document.getElementById('stampLine1').value, 95, 95);
+                ctx.font = 'bold 11px Cairo, sans-serif';
+                ctx.fillText(document.getElementById('stampLine2').value, 95, 120);
+            }
+
+            // 5. Text Contents
+            ctx.fillStyle = currentTextColor;
+            ctx.textAlign = 'right';
+
+            // Header
+            ctx.font = `bold 30px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
+            ctx.fillText(document.getElementById('paperHeader').value, width - 60, 95);
+
+            // Date
+            ctx.font = '16px Cairo, sans-serif';
+            ctx.fillText(document.getElementById('paperDate').innerText, width - 60, 130);
+
+            // Body Lines
+            ctx.font = `${currentFontSizePx + 6}px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
+            const lines = document.getElementById('paperBody').value.split('\n');
+            let startY = 220;
+            lines.forEach(line => {
+                ctx.fillText(line, width - 60, startY);
+                startY += (currentFontSizePx * 1.9);
             });
+
+            // Footer Sign
+            ctx.font = `bold 24px '${currentFontFamily}', Amiri, 'Aref Ruqaa', serif`;
+            ctx.fillText(document.getElementById('paperFooter').value, width - 140, height - 70);
+
+            // 6. Wax Seal (Bottom Right)
+            if (document.getElementById('sealToggle').checked) {
+                const sealX = width - 75;
+                const sealY = height - 75;
+
+                ctx.beginPath();
+                ctx.arc(sealX, sealY, 42, 0, Math.PI * 2);
+                ctx.fillStyle = sealColor;
+                ctx.fill();
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.setLineDash([3, 3]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                ctx.fillStyle = '#591624';
+                ctx.font = '32px serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(document.getElementById('waxSeal').innerText, sealX, sealY + 10);
+            }
+
+            // Trigger Download
+            const link = document.createElement('a');
+            link.download = 'Letters-and-Love-Card.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         }
     </script>
 </body>
