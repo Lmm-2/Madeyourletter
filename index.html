@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
-    <!-- استدعاء كافة الخطوط العربية الفاخرة -->
+    <!-- استدعاء الخطوط العربية الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
@@ -98,7 +98,7 @@
 
         .btn-round {
             background: #FDF9F6;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -112,7 +112,7 @@
 
         .btn-pill {
             background: #FDF9F6;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             padding: 6px 12px;
             border-radius: 12px;
             font-size: 0.75rem;
@@ -285,13 +285,13 @@
             background: #FAF6F3;
             padding: 6px 10px;
             border-radius: 10px;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             cursor: pointer;
         }
 
         .btn-template {
             background: #FAF6F3;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             padding: 6px 12px;
             border-radius: 10px;
             font-size: 0.8rem;
@@ -302,7 +302,7 @@
 
         .btn-seal-symbol {
             background: #FFFDF9;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             width: 32px;
             height: 32px;
             border-radius: 8px;
@@ -533,11 +533,11 @@
             cursor: pointer;
         }
 
-        /* PERFECT SINGLE PAGE PDF & PROPORTIONAL PRINT STYLING */
+        /* ABSOLUTE CENTERING SINGLE PAGE PRINT & PDF FIX */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 0;
+                margin: 0mm;
             }
 
             html, body {
@@ -561,25 +561,24 @@
             }
 
             #paperCard {
-                position: fixed !important;
+                position: absolute !important;
                 left: 50% !important;
                 top: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                width: 180mm !important;
-                height: 260mm !important;
-                max-height: 96vh !important;
+                transform: translate(-50%, -50%) scale(0.92) !important;
+                width: 170mm !important;
+                height: 245mm !important;
                 box-shadow: none !important;
                 border: 1.5px solid #E8DFD8 !important;
                 border-radius: 16px !important;
                 margin: 0 !important;
-                padding: 30px 25px !important;
+                padding: 35px 30px !important;
                 page-break-inside: avoid !important;
                 page-break-after: avoid !important;
                 page-break-before: avoid !important;
             }
 
             .stamp-box {
-                left: 20px !important;
+                left: 25px !important;
                 right: auto !important;
             }
 
