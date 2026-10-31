@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
-    <!-- استدعاء كافة الخطوط العربية الفاخرة -->
+    <!-- استدعاء الخطوط العربية الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- مكتبة التقاط الشاشة الدقيقة -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root {
@@ -311,12 +309,7 @@
             color: var(--burgundy);
         }
 
-        /* Paper Card Container - Added safe padding container */
-        .card-wrapper {
-            background: transparent;
-            padding: 10px; /* ضمان عدم قص الأطراف عند التقاط الصورة */
-        }
-
+        /* Paper Card Container */
         .paper-card {
             width: 100%;
             min-height: 520px;
@@ -525,6 +518,31 @@
             color: #888;
             font-weight: 700;
         }
+
+        /* PERFECT PRINT & PDF SINGLE PAGE OVERRIDE */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body * {
+                visibility: hidden !important;
+            }
+            #paperCard, #paperCard * {
+                visibility: visible !important;
+            }
+            #paperCard {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: 100vh !important;
+                border: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                padding: 40px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -622,35 +640,33 @@
             </div>
 
             <span class="section-title" style="margin-top: 18px;">حفظ وتصدير البطاقة الفاخرة:</span>
-            <button class="btn-pill" onclick="exportExactCardImage()">
-                <span>📥</span> تحميل البطاقة كاملة وبدقة عالية (PNG)
+            <button class="btn-pill" onclick="window.print()">
+                <span>🖨️</span> حفظ كملف PDF / طباعة فورية بصفحة واحدة
             </button>
         </div>
 
-        <div class="card-wrapper" id="cardWrapper">
-            <div class="paper-card paper-vintage" id="paperCard">
-                <div class="paper-top-ribbon"></div>
-                <div class="satin-ribbon" id="satinRibbon"></div>
+        <div class="paper-card paper-vintage" id="paperCard">
+            <div class="paper-top-ribbon"></div>
+            <div class="satin-ribbon" id="satinRibbon"></div>
 
-                <div class="stamp-box" id="stampBox">
-                    <input type="text" class="stamp-input" value="Letters & Love">
-                    <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
-                </div>
+            <div class="stamp-box" id="stampBox">
+                <input type="text" class="stamp-input" value="Letters & Love">
+                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
+            </div>
 
-                <div>
-                    <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                    <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
-                    <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
+            <div>
+                <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
+                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
+                <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
 
 دمتم لي سندا وفخرا لا ينتهي.</textarea>
-                </div>
+            </div>
 
-                <div>
-                    <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
-                    <div class="wax-seal-btn" id="waxSeal">♛</div>
-                </div>
+            <div>
+                <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
+                <div class="wax-seal-btn" id="waxSeal">♛</div>
             </div>
         </div>
 
@@ -703,7 +719,7 @@
             <h3>إرشادات التصميم والتحميل 💡</h3>
             <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
             <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
-            <div class="guide-step">٣. اضغطوا زر التحميل لتحفظوا البطاقة بجميع تفاصيلها وأطرافها واضحة تماماً بوضوح فائق!</div>
+            <div class="guide-step">٣. اضغطوا زر الطباعة لحفظ البطاقة كملف PDF متناسق بصفحة واحدة جاهزة للإرسال للجميع!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
@@ -792,23 +808,6 @@
                 document.getElementById('paperHeader').value = "رسالة شكر وامتنان 💌";
                 document.getElementById('paperBody').value = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
             }
-        }
-
-        /* SAFE PADDED EXPORT TO AVOID ANY EDGE CROPPING */
-        function exportExactCardImage() {
-            const wrapperElement = document.getElementById('cardWrapper');
-            
-            window.html2canvas(wrapperElement, {
-                scale: 3, // دقة فائقة
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: '#F8F4F0'
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'Letters-and-Love-Card.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
         }
     </script>
 </body>
