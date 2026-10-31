@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Letters & Love | استوديو الرسائل والبطاقات الفاخرة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
+    <!-- استدعاء كافة الخطوط المحددة بشكل مباشر وصحيح -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #F8F4F0;
@@ -13,7 +17,7 @@
             --burgundy: #6B1D2F;
             --pink-light: #FDF0F2;
             --border-color: #E8DFD8;
-            --shadow: 0 8px 24px rgba(107, 29, 47, 0.06);
+            --shadow: 0 10px 28px rgba(107, 29, 47, 0.08);
         }
 
         * {
@@ -60,8 +64,8 @@
         }
 
         .brand-icon {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             background: var(--burgundy);
             color: var(--accent-gold);
             border-radius: 12px;
@@ -69,19 +73,19 @@
             align-items: center;
             justify-content: center;
             font-family: 'Aref Ruqaa', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
         .brand-titles h1 {
             font-family: 'Aref Ruqaa', serif;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--burgundy);
             line-height: 1.1;
         }
 
         .brand-titles p {
-            font-size: 0.65rem;
+            font-size: 0.68rem;
             color: var(--accent-gold);
             font-weight: 700;
         }
@@ -95,29 +99,29 @@
         .btn-round {
             background: #FDF9F6;
             border: 1px solid var(--border-color);
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--burgundy);
         }
 
         .btn-pill {
             background: #FDF9F6;
             border: 1px solid var(--border-color);
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 12px;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--burgundy);
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
 
         /* Tool Panel Card */
@@ -139,7 +143,7 @@
         }
 
         .panel-header h2 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--burgundy);
             font-weight: 800;
         }
@@ -154,14 +158,13 @@
         }
 
         .section-title {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 800;
             color: var(--burgundy);
             margin: 14px 0 8px;
             display: block;
         }
 
-        /* Grid 2 Column */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -175,7 +178,7 @@
             padding: 10px 6px;
             text-align: center;
             cursor: pointer;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -203,8 +206,8 @@
             background: white;
             border: 1.5px solid var(--border-color);
             border-radius: 10px;
-            padding: 7px 12px;
-            font-size: 0.8rem;
+            padding: 8px 12px;
+            font-size: 0.82rem;
             font-weight: 700;
             color: var(--burgundy);
             cursor: pointer;
@@ -223,7 +226,6 @@
             box-shadow: 0 0 0 1px #DDD;
         }
 
-        /* Toggle Switch */
         .switch-row {
             display: flex;
             justify-content: space-between;
@@ -264,11 +266,22 @@
         input:checked + .slider { background-color: var(--burgundy); }
         input:checked + .slider:before { transform: translateX(20px); }
 
+        /* Disabled Controls Overlay Effect */
+        .seal-controls {
+            transition: opacity 0.3s ease;
+        }
+
+        .seal-controls.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
         .check-box-label {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             background: #FAF6F3;
             padding: 6px 10px;
@@ -282,24 +295,40 @@
             border: 1px solid var(--border-color);
             padding: 6px 12px;
             border-radius: 10px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--burgundy);
             cursor: pointer;
         }
 
-        /* Paper Preview Card */
+        .btn-seal-symbol {
+            background: #FFFDF9;
+            border: 1px solid var(--border-color);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--burgundy);
+        }
+
+        /* Paper Card Container */
         .paper-card {
             width: 100%;
             min-height: 520px;
             border-radius: 18px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            padding: 30px 24px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s;
+            overflow: hidden;
+            font-family: 'Aref Ruqaa', serif;
         }
 
         .paper-vintage { background: #F5ECDF; color: #4A3E3D; }
@@ -307,86 +336,111 @@
         .paper-navy { background: #131B24; color: #E6C587; }
         .paper-white { background: #FFFFFF; color: #2B2B2B; }
 
-        .paper-top-bar {
+        .paper-top-ribbon {
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 12px;
+            height: 10px;
             background: var(--burgundy);
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
         }
 
+        .satin-ribbon {
+            position: absolute;
+            top: 0;
+            right: 40px;
+            width: 26px;
+            height: 100%;
+            background: rgba(107, 29, 47, 0.15);
+            border-left: 1px dashed rgba(107, 29, 47, 0.3);
+            border-right: 1px dashed rgba(107, 29, 47, 0.3);
+            pointer-events: none;
+        }
+
+        /* Customizable Postage Stamp */
         .stamp-box {
             position: absolute;
             top: 24px;
-            left: 18px;
-            width: 52px;
-            height: 64px;
+            left: 20px;
+            width: 65px;
+            height: 70px;
             background: white;
             border: 1.5px dashed #C5A059;
-            padding: 3px;
+            padding: 4px;
             text-align: center;
-            font-size: 0.6rem;
-            font-weight: bold;
-            color: var(--burgundy);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .stamp-input {
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: bold;
+            color: var(--burgundy);
+            width: 100%;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
         }
 
         .paper-header {
             border: none;
             background: transparent;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
             outline: none;
             margin-top: 15px;
             text-align: right;
+            font-family: inherit;
         }
 
         .paper-date {
-            font-size: 0.72rem;
-            color: #888;
+            font-size: 0.75rem;
+            color: inherit;
+            opacity: 0.7;
             margin-bottom: 25px;
             display: block;
+            font-family: 'Cairo', sans-serif;
         }
 
         .paper-body {
             border: none;
             background: transparent;
-            font-size: 1.05rem;
-            line-height: 1.85;
+            font-size: 1.25rem;
+            line-height: 1.9;
             color: inherit;
             width: 100%;
             height: 270px;
             resize: none;
             outline: none;
+            font-family: inherit;
         }
 
         .paper-footer {
             border: none;
             background: transparent;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
             text-align: right;
             outline: none;
+            font-family: inherit;
         }
 
         .wax-seal-btn {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 22px;
+            right: 22px;
             width: 58px;
             height: 58px;
             border-radius: 50%;
             background: #D4AF37;
-            color: white;
+            color: #591624;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -406,6 +460,15 @@
             margin-top: 6px;
         }
 
+        /* Footer Copyright */
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #888;
+            font-weight: 700;
+        }
+
         /* Modal Dialog Options */
         .modal-overlay {
             position: fixed;
@@ -423,9 +486,16 @@
             background: white;
             border-radius: 20px;
             padding: 20px;
-            max-width: 340px;
+            max-width: 360px;
             width: 100%;
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-card h3 {
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
         }
 
         .modal-option {
@@ -443,6 +513,47 @@
         .modal-option:last-child { border-bottom: none; }
         .radio-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--burgundy); }
         .radio-dot.selected { background: var(--burgundy); }
+
+        .guide-step {
+            background: #FDF8F5;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            font-weight: bold;
+            border-right: 3px solid var(--accent-gold);
+        }
+
+        .btn-full {
+            width: 100%;
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        /* PRINT STYLES - ONLY PRINT THE LETTER PAPER */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #paperCard, #paperCard * {
+                visibility: visible;
+            }
+            #paperCard {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -454,11 +565,12 @@
                 <div class="brand-icon">L</div>
                 <div class="brand-titles">
                     <h1>Letters & Love</h1>
-                    <p>استوديو الرسائل والبطاقات الفاخرة</p>
+                    <p>الرسائل والبطاقات الفاخرة</p>
                 </div>
             </div>
             <div class="header-actions">
-                <button class="btn-round" onclick="window.print()">🖨️</button>
+                <button class="btn-round" onclick="openGuideModal()" title="إرشادات الاستخدام">💡</button>
+                <button class="btn-round" onclick="window.print()" title="طباعة الرسالة">🖨️</button>
                 <button class="btn-pill" onclick="alert('معاينة الظرف الخارجي جاهزة!')">
                     <span>✉️</span> معاينة الظرف
                 </button>
@@ -493,7 +605,7 @@
             <span class="section-title">٢. الخط والتنسيق العربي:</span>
             <div class="flex-row">
                 <button class="custom-select-btn" onclick="openFontModal()">
-                    <span id="fontLabel">خط الرقعة (الأنيق)</span> <span>˅</span>
+                    <span id="fontLabel">خط الرقعة الأصلي</span> <span>˅</span>
                 </button>
                 <button class="custom-select-btn" onclick="openSizeModal()">
                     <span id="sizeLabel">حجم الخط: متوسط</span> <span>˅</span>
@@ -517,17 +629,17 @@
                 </label>
             </div>
 
-            <div class="flex-row" style="margin-top:10px;">
+            <div class="flex-row seal-controls" id="sealControlsGroup" style="margin-top:10px;">
                 <span style="font-size:0.75rem; font-weight:bold;">لون الشمع:</span>
                 <div class="color-dot" style="background:#E89FA9;" onclick="setSealBg('#E89FA9')"></div>
                 <div class="color-dot" style="background:#D4AF37;" onclick="setSealBg('#D4AF37')"></div>
                 <div class="color-dot" style="background:#6B1D2F;" onclick="setSealBg('#6B1D2F')"></div>
 
                 <span style="font-size:0.75rem; font-weight:bold; margin-right:10px;">رمز الختم:</span>
-                <button class="btn-template" onclick="setSealIcon('👑')">👑</button>
-                <button class="btn-template" onclick="setSealIcon('💖')">💖</button>
-                <button class="btn-template" onclick="setSealIcon('🌸')">🌸</button>
-                <button class="btn-template" onclick="setSealIcon('⭐')">⭐</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('♛')">♛</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('❦')">❦</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('⚜')">⚜</button>
+                <button class="btn-seal-symbol" onclick="setSealIcon('✦')">✦</button>
             </div>
 
             <!-- Accessories -->
@@ -537,7 +649,7 @@
                     <input type="checkbox" id="stampCheck" checked onchange="toggleStamp()"> طابع بريدي كلاسيكي ✉️
                 </label>
                 <label class="check-box-label">
-                    <input type="checkbox" id="ribbonCheck" checked> شريط ستان مزين 🎀
+                    <input type="checkbox" id="ribbonCheck" checked onchange="toggleRibbon()"> شريط ستان مزين 🎀
                 </label>
             </div>
 
@@ -552,11 +664,12 @@
 
         <!-- Live Paper Card Display -->
         <div class="paper-card paper-vintage" id="paperCard">
-            <div class="paper-top-bar"></div>
+            <div class="paper-top-ribbon"></div>
+            <div class="satin-ribbon" id="satinRibbon"></div>
 
             <div class="stamp-box" id="stampBox">
-                <span>ROYAL POST</span>
-                <span>2026</span>
+                <input type="text" class="stamp-input" value="Letters & Love">
+                <input type="text" class="stamp-input" value="2026" style="font-size:0.6rem;">
             </div>
 
             <div>
@@ -571,30 +684,36 @@
 
             <div>
                 <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
-                <div class="wax-seal-btn" id="waxSeal">👑</div>
+                <div class="wax-seal-btn" id="waxSeal">♛</div>
             </div>
         </div>
 
         <div class="bottom-hint">✨ يمكنك الضغط المباشر على النص داخل الورقة لتعديله وتخصيصه كما تحب!</div>
+
+        <!-- Footer Copyright -->
+        <footer>
+            Letters & Love Studio © 2026 – مصمم بصنع الحب والأناقة 🌿
+        </footer>
     </div>
 
     <!-- Font Picker Modal -->
     <div class="modal-overlay" id="fontModal">
         <div class="modal-card">
-            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة (الأنيق)')">
-                <span>خط الرقعة (الأنيق)</span> <div class="radio-dot selected"></div>
+            <h3>اختر نوع الخط العربي ✒️</h3>
+            <div class="modal-option" onclick="setFont('\'Aref Ruqaa\', serif', 'خط الرقعة الأصلي')">
+                <span>خط الرقعة الأصلي</span> <div class="radio-dot selected" id="fd1"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري (الكلاسيكي)')">
-                <span>خط الأميري (الكلاسيكي)</span> <div class="radio-dot"></div>
+            <div class="modal-option" onclick="setFont('\'Amiri\', serif', 'خط الأميري الكلاسيكي')">
+                <span>خط الأميري الكلاسيكي</span> <div class="radio-dot" id="fd2"></div>
             </div>
             <div class="modal-option" onclick="setFont('\'Reem Kufi\', sans-serif', 'خط كوفي حديث')">
-                <span>خط كوفي حديث</span> <div class="radio-dot"></div>
+                <span>خط كوفي حديث</span> <div class="radio-dot" id="fd3"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال (ناعم)')">
-                <span>خط تجوال (ناعم)</span> <div class="radio-dot"></div>
+            <div class="modal-option" onclick="setFont('\'Tajawal\', sans-serif', 'خط تجوال الحديث')">
+                <span>خط تجوال الحديث</span> <div class="radio-dot" id="fd4"></div>
             </div>
-            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة (واضح)')">
-                <span>خط القاهرة (واضح)</span> <div class="radio-dot"></div>
+            <div class="modal-option" onclick="setFont('\'Cairo\', sans-serif', 'خط القاهرة الناعم')">
+                <span>خط القاهرة الناعم</span> <div class="radio-dot" id="fd5"></div>
             </div>
         </div>
     </div>
@@ -602,18 +721,32 @@
     <!-- Size Picker Modal -->
     <div class="modal-overlay" id="sizeModal">
         <div class="modal-card">
-            <div class="modal-option" onclick="setSize('0.95rem', 'حجم الخط: عادي')">
+            <h3>اختر حجم النص 📏</h3>
+            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: عادي')">
                 <span>حجم الخط: عادي</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.05rem', 'حجم الخط: متوسط')">
+            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: متوسط')">
                 <span>حجم الخط: متوسط</span> <div class="radio-dot selected"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.25rem', 'حجم الخط: كبير')">
+            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير')">
                 <span>حجم الخط: كبير</span> <div class="radio-dot"></div>
             </div>
-            <div class="modal-option" onclick="setSize('1.45rem', 'حجم الخط: كبير جداً')">
+            <div class="modal-option" onclick="setSize('1.65rem', 'حجم الخط: كبير جداً')">
                 <span>حجم الخط: كبير جداً</span> <div class="radio-dot"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- Guide Modal -->
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal-card">
+            <h3>إرشادات التصميم والطباعة 💡</h3>
+            <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
+            <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
+            <div class="guide-step">٣. اكتبوا الرسالة بشكل مباشر على الورقة أو من النماذج الجاهزة.</div>
+            <div class="guide-step">٤. خصصوا الختم الشمعي وطابع البريد بعباراتكم الخاصة.</div>
+            <div class="guide-step">٥. اضغطوا زر الطباعة لطباعة الورقة فقط بدقة فائقة!</div>
+            <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
 
@@ -634,8 +767,16 @@
         }
 
         function toggleSeal() {
+            const isChecked = document.getElementById('sealToggle').checked;
             const seal = document.getElementById('waxSeal');
-            seal.style.display = document.getElementById('sealToggle').checked ? 'flex' : 'none';
+            const controls = document.getElementById('sealControlsGroup');
+            
+            seal.style.display = isChecked ? 'flex' : 'none';
+            if (isChecked) {
+                controls.classList.remove('disabled');
+            } else {
+                controls.classList.add('disabled');
+            }
         }
 
         function setSealBg(c) {
@@ -651,12 +792,27 @@
                 document.getElementById('stampCheck').checked ? 'flex' : 'none';
         }
 
+        function toggleRibbon() {
+            document.getElementById('satinRibbon').style.display = 
+                document.getElementById('ribbonCheck').checked ? 'block' : 'none';
+        }
+
         function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
         function openSizeModal() { document.getElementById('sizeModal').style.display = 'flex'; }
+        function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
+        function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
 
         function setFont(fontFamily, label) {
             const card = document.getElementById('paperCard');
+            const body = document.getElementById('paperBody');
+            const header = document.getElementById('paperHeader');
+            const footer = document.getElementById('paperFooter');
+
             card.style.fontFamily = fontFamily;
+            body.style.fontFamily = fontFamily;
+            header.style.fontFamily = fontFamily;
+            footer.style.fontFamily = fontFamily;
+
             document.getElementById('fontLabel').innerText = label;
             document.getElementById('fontModal').style.display = 'none';
         }
