@@ -109,7 +109,7 @@
             background: var(--burgundy);
             color: white;
             border: none;
-            padding: 10px 16px;
+            padding: 12px 16px;
             border-radius: 14px;
             font-size: 0.85rem;
             font-weight: 700;
@@ -311,12 +311,17 @@
             color: var(--burgundy);
         }
 
-        /* Paper Card Container */
+        /* Paper Card Container - Added safe padding container */
+        .card-wrapper {
+            background: transparent;
+            padding: 10px; /* ضمان عدم قص الأطراف عند التقاط الصورة */
+        }
+
         .paper-card {
             width: 100%;
             min-height: 520px;
             border-radius: 18px;
-            padding: 30px 24px;
+            padding: 35px 28px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.06);
             position: relative;
             display: flex;
@@ -343,7 +348,7 @@
         .satin-ribbon {
             position: absolute;
             top: 0;
-            right: 40px;
+            right: 45px;
             width: 26px;
             height: 100%;
             background-color: rgba(107, 29, 47, 0.15) !important;
@@ -354,8 +359,8 @@
 
         .stamp-box {
             position: absolute;
-            top: 24px;
-            left: 20px !important;
+            top: 28px;
+            left: 28px !important;
             right: auto !important;
             width: 65px;
             height: 70px;
@@ -431,8 +436,8 @@
 
         .wax-seal-btn {
             position: absolute;
-            bottom: 22px;
-            right: 22px;
+            bottom: 25px;
+            right: 25px;
             width: 58px;
             height: 58px;
             border-radius: 50%;
@@ -618,32 +623,34 @@
 
             <span class="section-title" style="margin-top: 18px;">حفظ وتصدير البطاقة الفاخرة:</span>
             <button class="btn-pill" onclick="exportExactCardImage()">
-                <span>📥</span> تحميل البطاقة بدقة مطابقة للشاشة (PNG)
+                <span>📥</span> تحميل البطاقة كاملة وبدقة عالية (PNG)
             </button>
         </div>
 
-        <div class="paper-card paper-vintage" id="paperCard">
-            <div class="paper-top-ribbon"></div>
-            <div class="satin-ribbon" id="satinRibbon"></div>
+        <div class="card-wrapper" id="cardWrapper">
+            <div class="paper-card paper-vintage" id="paperCard">
+                <div class="paper-top-ribbon"></div>
+                <div class="satin-ribbon" id="satinRibbon"></div>
 
-            <div class="stamp-box" id="stampBox">
-                <input type="text" class="stamp-input" value="Letters & Love">
-                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
-            </div>
+                <div class="stamp-box" id="stampBox">
+                    <input type="text" class="stamp-input" value="Letters & Love">
+                    <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
+                </div>
 
-            <div>
-                <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
-                <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
+                <div>
+                    <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
+                    <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
+                    <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
 
 دمتم لي سندا وفخرا لا ينتهي.</textarea>
-            </div>
+                </div>
 
-            <div>
-                <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
-                <div class="wax-seal-btn" id="waxSeal">♛</div>
+                <div>
+                    <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
+                    <div class="wax-seal-btn" id="waxSeal">♛</div>
+                </div>
             </div>
         </div>
 
@@ -696,7 +703,7 @@
             <h3>إرشادات التصميم والتحميل 💡</h3>
             <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
             <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
-            <div class="guide-step">٣. اضغطوا زر التحميل لتحفظوا البطاقة مطابقة تماماً لشاشتكم بوضوح فائق!</div>
+            <div class="guide-step">٣. اضغطوا زر التحميل لتحفظوا البطاقة بجميع تفاصيلها وأطرافها واضحة تماماً بوضوح فائق!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
@@ -787,21 +794,15 @@
             }
         }
 
-        /* PERFECT ACCURATE HTML2CANVAS EXPORT */
+        /* SAFE PADDED EXPORT TO AVOID ANY EDGE CROPPING */
         function exportExactCardImage() {
-            const cardElement = document.getElementById('paperCard');
+            const wrapperElement = document.getElementById('cardWrapper');
             
-            // Fix textareas and inputs for proper canvas rendering
-            const textareas = cardElement.querySelectorAll('textarea, input');
-            textareas.forEach(el => {
-                el.style.width = el.offsetWidth + 'px';
-            });
-
-            window.html2canvas(cardElement, {
-                scale: 3, // High resolution
+            window.html2canvas(wrapperElement, {
+                scale: 3, // دقة فائقة
                 useCORS: true,
                 allowTaint: true,
-                backgroundColor: null
+                backgroundColor: '#F8F4F0'
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'Letters-and-Love-Card.png';
