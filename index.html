@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Letters & Love | الرسائل والبطاقات الفاخرة</title>
-    <!-- استدعاء الخطوط العربية الفاخرة -->
+    <!-- استدعاء كافة الخطوط العربية الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- مكتبة التصدير الصافي -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root {
@@ -118,6 +120,23 @@
             gap: 6px;
             width: 100%;
             box-shadow: 0 4px 12px rgba(107, 29, 47, 0.2);
+        }
+
+        .btn-pill-gold {
+            background: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.25);
         }
 
         .tool-panel {
@@ -309,7 +328,11 @@
             color: var(--burgundy);
         }
 
-        /* Paper Card Container */
+        .card-wrapper {
+            background: transparent;
+            padding: 10px;
+        }
+
         .paper-card {
             width: 100%;
             min-height: 520px;
@@ -518,31 +541,6 @@
             color: #888;
             font-weight: 700;
         }
-
-        /* PERFECT PRINT & PDF SINGLE PAGE OVERRIDE */
-        @media print {
-            @page {
-                size: A4 portrait;
-                margin: 0;
-            }
-            body * {
-                visibility: hidden !important;
-            }
-            #paperCard, #paperCard * {
-                visibility: visible !important;
-            }
-            #paperCard {
-                position: absolute !important;
-                left: 0 !important;
-                top: 0 !important;
-                width: 100% !important;
-                height: 100vh !important;
-                border: none !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                padding: 40px !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -639,40 +637,58 @@
                 <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
             </div>
 
-            <span class="section-title" style="margin-top: 18px;">حفظ وتصدير البطاقة الفاخرة:</span>
-            <button class="btn-pill" onclick="window.print()">
-                <span>🖨️</span> حفظ كملف PDF / طباعة فورية بصفحة واحدة
-            </button>
+            <!-- خيارات التنزيل والمشاركة الذكية -->
+            <span class="section-title" style="margin-top: 18px;">الحفظ والمشاركة:</span>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn-pill" onclick="openDirectView()">
+                    <span>🖼️</span> عرض البطاقة للتنزيل الفوري (ضغط مطوّل)
+                </button>
+                <button class="btn-pill-gold" onclick="copyCardLink()">
+                    <span>🔗</span> نسخ رابط البطاقة للمشاركة المباشرة
+                </button>
+            </div>
         </div>
 
-        <div class="paper-card paper-vintage" id="paperCard">
-            <div class="paper-top-ribbon"></div>
-            <div class="satin-ribbon" id="satinRibbon"></div>
+        <div class="card-wrapper" id="cardWrapper">
+            <div class="paper-card paper-vintage" id="paperCard">
+                <div class="paper-top-ribbon"></div>
+                <div class="satin-ribbon" id="satinRibbon"></div>
 
-            <div class="stamp-box" id="stampBox">
-                <input type="text" class="stamp-input" value="Letters & Love">
-                <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
-            </div>
+                <div class="stamp-box" id="stampBox">
+                    <input type="text" class="stamp-input" value="Letters & Love">
+                    <input type="text" class="stamp-input" value="2026" style="font-size:0.55rem;">
+                </div>
 
-            <div>
-                <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
-                <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
-                <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
+                <div>
+                    <input type="text" class="paper-header" id="paperHeader" value="بسم الله الرحمن الرحيم">
+                    <span class="paper-date">٣١ أكتوبر ٢٠٢٦</span>
+                    <textarea class="paper-body" id="paperBody">إلى من طيب بهم العمر وتزهر بأيامهم الحياة...
 
 أكتب لكم هذه الكلمات بكثير من الحب والامتنان، متمنياً لكم أياماً تشبه نقاء روحكم، وضحكات لا تغيب عن وجوهكم الجميلة.
 
 دمتم لي سندا وفخرا لا ينتهي.</textarea>
-            </div>
+                </div>
 
-            <div>
-                <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
-                <div class="wax-seal-btn" id="waxSeal">♛</div>
+                <div>
+                    <input type="text" class="paper-footer" id="paperFooter" value="مُرسلة ب كل حب، مُحبتك الدائم ❤️">
+                    <div class="wax-seal-btn" id="waxSeal">♛</div>
+                </div>
             </div>
         </div>
 
         <footer>
             Letters & Love © 2026 – مصمم بصنع الحب والأناقة 🌿
         </footer>
+    </div>
+
+    <!-- Modal overlay for image preview -->
+    <div class="modal-overlay" id="imagePreviewModal">
+        <div class="modal-card" style="max-width: 420px; text-align: center;">
+            <h3 style="margin-bottom: 8px;">بطاقتك الفاخرة جاهزة! 💌</h3>
+            <p style="font-size: 0.78rem; color: #666; margin-bottom: 12px;">اضغطي على الصورة ضغطة مطوّلة (Long Press) واختاري "تنزيل الصورة" لحفظها كاملة في معرضك!</p>
+            <div id="imageContainer" style="margin-bottom: 12px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+            <button class="btn-full" onclick="closeImagePreview()">إغلاق النافذة ✨</button>
+        </div>
     </div>
 
     <!-- Font Picker Modal -->
@@ -716,10 +732,10 @@
     <!-- Guide Modal -->
     <div class="modal-overlay" id="guideModal">
         <div class="modal-card">
-            <h3>إرشادات التصميم والتحميل 💡</h3>
-            <div class="guide-step">١. اختاروا خامة الورق والنمط المفضل للبطاقة.</div>
-            <div class="guide-step">٢. حددوا الخط المناسب، الحجم، ولون النص.</div>
-            <div class="guide-step">٣. اضغطوا زر الطباعة لحفظ البطاقة كملف PDF متناسق بصفحة واحدة جاهزة للإرسال للجميع!</div>
+            <h3>إرشادات الاستخدام والتحميل 💡</h3>
+            <div class="guide-step">١. اختاروا نمط الورق والخط العربي الفاخر.</div>
+            <div class="guide-step">٢. اكتبوا كلماتكم الجميلة في البطاقة.</div>
+            <div class="guide-step">٣. اضغطوا زر "عرض البطاقة للتنزيل الفوري" ثم احفظوها بضغطة مطولة، أو انسخوا الرابط وشاركوه فوراً مع من تحبون!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
@@ -744,13 +760,8 @@
             const isChecked = document.getElementById('sealToggle').checked;
             const seal = document.getElementById('waxSeal');
             const controls = document.getElementById('sealControlsGroup');
-            
             seal.style.display = isChecked ? 'flex' : 'none';
-            if (isChecked) {
-                controls.classList.remove('disabled');
-            } else {
-                controls.classList.add('disabled');
-            }
+            controls.classList.toggle('disabled', !isChecked);
         }
 
         function setSealBg(c) {
@@ -762,19 +773,18 @@
         }
 
         function toggleStamp() {
-            document.getElementById('stampBox').style.display = 
-                document.getElementById('stampCheck').checked ? 'flex' : 'none';
+            document.getElementById('stampBox').style.display = document.getElementById('stampCheck').checked ? 'flex' : 'none';
         }
 
         function toggleRibbon() {
-            document.getElementById('satinRibbon').style.display = 
-                document.getElementById('ribbonCheck').checked ? 'block' : 'none';
+            document.getElementById('satinRibbon').style.display = document.getElementById('ribbonCheck').checked ? 'block' : 'none';
         }
 
         function openFontModal() { document.getElementById('fontModal').style.display = 'flex'; }
         function openSizeModal() { document.getElementById('sizeModal').style.display = 'flex'; }
         function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
         function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
+        function closeImagePreview() { document.getElementById('imagePreviewModal').style.display = 'none'; }
 
         function setFont(fontFamily, label) {
             const card = document.getElementById('paperCard');
@@ -808,6 +818,37 @@
                 document.getElementById('paperHeader').value = "رسالة شكر وامتنان 💌";
                 document.getElementById('paperBody').value = "كلمات الشكر تقف عاجزة أمام لطفكم العظيم ومواقفكم النبيلة.\nشكراً من القلب لكل كلمة طيبة تركت أثراً جميلاً.";
             }
+        }
+
+        // 1. الخيار الأول: تحويل البطاقة لصورة صافية في نافذة معاينة للتنزيل المباشر
+        function openDirectView() {
+            const wrapperElement = document.getElementById('cardWrapper');
+            window.html2canvas(wrapperElement, {
+                scale: 3,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#F8F4F0'
+            }).then(canvas => {
+                const img = document.createElement('img');
+                img.src = canvas.toDataURL('image/png');
+                img.style.width = '100%';
+                img.style.display = 'block';
+                
+                const container = document.getElementById('imageContainer');
+                container.innerHTML = '';
+                container.appendChild(img);
+                
+                document.getElementById('imagePreviewModal').style.display = 'flex';
+            });
+        }
+
+        // 2. الخيار الثالث: نسخ رابط البطاقة للمشاركة مع عائلتك أو صديقاتك
+        function copyCardLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert("✨ تم نسخ رابط موقع Letters & Love بنجاح! يمكنك الآن إرساله لأي شخص ليفتح البطاقة على هاتفه مباشرة.");
+            }).catch(() => {
+                alert("تم نسخ الرابط!");
+            });
         }
     </script>
 </body>
