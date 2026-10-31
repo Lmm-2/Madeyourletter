@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- مكتبة التصدير -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root {
@@ -311,12 +309,12 @@
             color: var(--burgundy);
         }
 
-        /* Paper Card Container */
+        /* Safe Mobile-Adapted Paper Card */
         .paper-card {
             width: 100%;
             min-height: 520px;
             border-radius: 18px;
-            padding: 35px 28px;
+            padding: 35px 22px; /* تقليل الهوامش الخارجية قليلاً لسلامة الأطراف */
             box-shadow: 0 12px 32px rgba(0,0,0,0.06);
             position: relative;
             display: flex;
@@ -343,8 +341,8 @@
         .satin-ribbon {
             position: absolute;
             top: 0;
-            right: 45px;
-            width: 26px;
+            right: 35px;
+            width: 24px;
             height: 100%;
             background-color: rgba(107, 29, 47, 0.15) !important;
             border-left: 1px dashed rgba(107, 29, 47, 0.3);
@@ -352,13 +350,14 @@
             pointer-events: none;
         }
 
+        /* Fixed Inset Stamp Box */
         .stamp-box {
             position: absolute;
-            top: 28px;
-            left: 28px !important;
+            top: 24px;
+            left: 16px !important; /* تقريب الطابع للداخل لسلامته من القص */
             right: auto !important;
-            width: 65px;
-            height: 70px;
+            width: 60px;
+            height: 65px;
             background-color: #FFFFFF !important;
             border: 1.5px dashed #C5A059;
             padding: 4px;
@@ -385,7 +384,7 @@
         .paper-header {
             border: none;
             background: transparent;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
@@ -420,31 +419,66 @@
         .paper-footer {
             border: none;
             background: transparent;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: bold;
             color: inherit;
             width: 100%;
             text-align: right;
             outline: none;
             font-family: inherit;
+            padding-left: 50px; /* إعطاء مساحة للختم لعدم التداخل */
         }
 
+        /* Fixed Inset Wax Seal */
         .wax-seal-btn {
             position: absolute;
-            bottom: 25px;
-            right: 25px;
-            width: 58px;
-            height: 58px;
+            bottom: 18px;
+            right: 16px; /* تقريب الختم للداخل لسلامته من القص */
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background-color: #D4AF37 !important;
             color: #591624 !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.2);
             border: 2px dashed rgba(255,255,255,0.4);
             cursor: pointer;
+        }
+
+        .btn-exit-clean {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 99999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        body.clean-mode {
+            background-color: var(--bg-color) !important;
+            padding: 30px 15px !important;
+            justify-content: center !important;
+        }
+
+        body.clean-mode header,
+        body.clean-mode .tool-panel,
+        body.clean-mode footer {
+            display: none !important;
+        }
+
+        body.clean-mode .btn-exit-clean {
+            display: block !important;
         }
 
         .modal-overlay {
@@ -513,6 +547,8 @@
     </style>
 </head>
 <body>
+
+    <button class="btn-exit-clean" onclick="toggleCleanMode()">✕ العودة للتعديل</button>
 
     <div class="app-shell">
         <header>
@@ -606,9 +642,9 @@
                 <button class="btn-template" onclick="loadTemplate('thanks')">شكر وامتنان ✨</button>
             </div>
 
-            <span class="section-title" style="margin-top: 18px;">التحويل والتصدير الذكي:</span>
-            <button class="btn-pill" onclick="generateSmartExport()">
-                <span>🎨</span> توليد صورة البطاقة الصافية (تصدير كـ PNG)
+            <span class="section-title" style="margin-top: 18px;">المعاينة والتصوير المباشر:</span>
+            <button class="btn-pill" onclick="toggleCleanMode()">
+                <span>📸</span> عرض البطاقة للتصوير المثالي (Screenshot)
             </button>
         </div>
 
@@ -683,10 +719,10 @@
     <!-- Guide Modal -->
     <div class="modal-overlay" id="guideModal">
         <div class="modal-card">
-            <h3>إرشادات التصميم والتحميل 💡</h3>
-            <div class="guide-step">١. اكتبوا رسالتكم وحددوا الخط ولون الورق.</div>
-            <div class="guide-step">٢. اضغطوا "توليد صورة البطاقة الصافية 🎨".</div>
-            <div class="guide-step">٣. ستفتح صفحة التوليد لتأخذوا الصورة كاملة بدقة فائقة وبدون أي قص لأطرف الورقة!</div>
+            <h3>إرشادات التصوير والاحتفاظ 💡</h3>
+            <div class="guide-step">١. صممي بطاقتك واكتبي رسالتك الجميلة.</div>
+            <div class="guide-step">٢. اضغطي زر "عرض البطاقة للتصوير المثالي 📸".</div>
+            <div class="guide-step">٣. التقطي الشاشة (Screenshot)، وستظهر البطاقة كاملة 100% بنقاء فائق وبدون أي أزرار أو قص لأطرافها!</div>
             <button class="btn-full" onclick="closeGuideModal()">فهمت ذلك ✨</button>
         </div>
     </div>
@@ -770,85 +806,8 @@
             }
         }
 
-        /* SMART DEDICATED EXPORT FUNCTION */
-        function generateSmartExport() {
-            const card = document.getElementById('paperCard');
-            
-            window.html2canvas(card, {
-                scale: 3,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: null,
-                width: card.offsetWidth,
-                height: card.offsetHeight
-            }).then(canvas => {
-                const imageUrl = canvas.toDataURL('image/png');
-                
-                // Open export window
-                const exportWin = window.open('', '_blank');
-                exportWin.document.write(`
-                    <!DOCTYPE html>
-                    <html lang="ar" dir="rtl">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Letters & Love - تنزيل البطاقة</title>
-                        <style>
-                            body {
-                                margin: 0;
-                                padding: 20px 12px;
-                                background-color: #F8F4F0;
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                font-family: 'Cairo', sans-serif;
-                            }
-                            .notice {
-                                background: #6B1D2F;
-                                color: white;
-                                padding: 12px 20px;
-                                border-radius: 14px;
-                                font-size: 0.85rem;
-                                font-weight: bold;
-                                text-align: center;
-                                margin-bottom: 16px;
-                                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                            }
-                            .img-frame {
-                                max-width: 440px;
-                                width: 100%;
-                                border-radius: 18px;
-                                overflow: hidden;
-                                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-                            }
-                            img {
-                                width: 100%;
-                                height: auto;
-                                display: block;
-                            }
-                            .btn-dl {
-                                margin-top: 16px;
-                                background: #C5A059;
-                                color: white;
-                                text-decoration: none;
-                                padding: 12px 24px;
-                                border-radius: 12px;
-                                font-weight: bold;
-                                font-size: 0.9rem;
-                                display: inline-block;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="notice">✨ اضغطي على الصورة ضغطة مطوّلة (Long Press) واختاري "حفظ الصورة"!</div>
-                        <div class="img-frame">
-                            <img src="${imageUrl}" alt="Letters & Love Card">
-                        </div>
-                        <a href="${imageUrl}" download="Letters-and-Love-Card.png" class="btn-dl">📥 حفظ مباشر للبطاقة</a>
-                    </body>
-                    </html>
-                `);
-            });
+        function toggleCleanMode() {
+            document.body.classList.toggle('clean-mode');
         }
     </script>
 </body>
